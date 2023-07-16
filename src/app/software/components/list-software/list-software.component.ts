@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {SoftwareService} from "../../services/Software.service";
+import {SoftwareService} from "../../../services/software.service";
 
 @Component({
-  selector: 'app-software',
-  templateUrl: './software.component.html',
-  styleUrls: ['./software.component.scss']
+  selector: 'app-softwares',
+  templateUrl: './list-software.component.html',
+  styleUrls: ['./list-software.component.scss']
 })
 export class SoftwareComponent implements OnInit {
 

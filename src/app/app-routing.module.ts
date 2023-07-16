@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {SoftwareComponent} from "./contenairs/software/software.component";
+import {SoftwareComponent} from "./software/components/list-software/list-software.component";
+import {SoftwareViewComponent} from "./software/containers/Software-View/Software-View.component";
 
 const routes: Routes = [
-  { path: 'app-software', component: SoftwareComponent },
- /* { path: '',   redirectTo: '/app-home', pathMatch: 'full' }, */
+  { path: 'app-software-view', component: SoftwareViewComponent },
+  { path: 'app-list-softwares', component: SoftwareComponent },
+  { path: '',   redirectTo: '/root', pathMatch: 'full' },
 ];
 
 @NgModule({

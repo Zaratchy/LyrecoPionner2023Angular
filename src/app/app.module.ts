@@ -4,13 +4,15 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SoftwareComponent } from './contenairs/software/software.component';
+import { SoftwareComponent } from './software/components/list-software/list-software.component';
+import {SoftwareViewComponent} from "./software/containers/Software-View/Software-View.component";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SoftwareComponent
+    SoftwareComponent,
+    SoftwareViewComponent
   ],
   imports: [
     BrowserModule,
