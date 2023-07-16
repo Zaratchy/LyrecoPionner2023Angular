@@ -1,0 +1,15 @@
+<p>software works!</p>
+
+
+<div *ngIf="softwareList">
+  <h2>Liste des logiciels :</h2>
+  <ul>
+    <li *ngFor="let software of softwareList">
+      {{ software.name }} - {{ software.description }} <!-- Remplacez "name" et "version" par les propriétés réelles de votre objet logiciel -->
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="!softwareList">
+  <p>Aucun logiciel trouvé.</p>
+</div>
