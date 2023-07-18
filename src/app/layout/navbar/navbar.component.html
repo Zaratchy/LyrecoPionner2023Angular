@@ -1,31 +1,42 @@
-<div>
-  <div class="flex select-none items-center justify-between bg-gray-800 px-2 py-4 text-gray-400 sm:px-6">
-
-    <div class="hidden sm:space-x-6 sm:flex sm:justify-between">
-      <a class="rounded-md bg-gray-900 px-3 py-1 font-medium text-white" href="#">Dashboard</a>
-      <a class="rounded-md px-3 py-1 font-medium hover:bg-gray-700 hover:text-white" href="#">Team</a>
-      <a class="rounded-md px-3 py-1 font-medium hover:bg-gray-700 hover:text-white" href="#">Projects</a>
-      <a class="rounded-md px-3 py-1 font-medium hover:bg-gray-700 hover:text-white" href="#">Calendar</a>
-    </div>
-
-
+<nav>
+  <div class="flex select-none items-center justify-between px-2 py-4 text-gray-400 sm:px-6">
 
     <div class="flex items-center">
-
-
       <img
-        class="mr-2 h-8 w-8 rounded-full"
-        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+        class="mr-2 h-12 w-15"
+        src="assets/images/logo-lyreco.png"
         alt="avatar">
     </div>
 
+    <div class="flex items-center mr-4">
+      <button class="text-[#2C2E87]">Login</button>
+    </div>
+
   </div>
 
-  <div *ngIf="isMenuOpen" class="flex flex-col bg-gray-800 p-2 text-gray-300 sm:hidden">
-    <a class="mb-1 rounded-md bg-gray-900 px-3 py-2 font-medium text-white" href="#">Dashboard</a>
-    <a class="mb-1 rounded-md px-3 py-2 font-medium hover:bg-gray-700 hover:text-white" href="#">Team</a>
-    <a class="mb-1 rounded-md px-3 py-2 font-medium hover:bg-gray-700 hover:text-white" href="#">Projects</a>
-    <a class="mb-1 rounded-md px-3 py-2 font-medium hover:bg-gray-700 hover:text-white" href="#">Calendar</a>
+  <div class="flex select-none items-center justify-between flex-row-reverse bg-[#2D2E87] px-2 py-4 text-gray-400 sm:px-6">
+
+
+
+    <div class="hidden sm:space-x-6 sm:flex sm:justify-between">
+      <a class="rounded-md px-3 py-1 font-medium hover:bg-[#797AAA] hover:text-white" href="#">Déconnexion</a>
+    </div>
+
+    <button *ngIf="!isMenuOpen"
+            (click)="toggleMenu()"
+            class="rounded p-2 hover:cursor-pointer hover:bg-[#797AAA] hover:text-white sm:hidden">| | |
+    </button>
+
+    <button *ngIf="isMenuOpen"
+            (click)="toggleMenu()"
+            class="rounded p-2 hover:cursor-pointer hover:bg-[#797AAA] hover:text-white sm:hidden">| | |
+    </button>
+
+
   </div>
-</div>
+
+  <div *ngIf="isMenuOpen" class="flex flex-col bg-[#2D2E87] p-2 text-gray-300 sm:hidden">
+    <a class="rounded-md px-3 py-1 font-medium hover:bg-[#797AAA] hover:text-white" href="#">Déconnexion</a>
+  </div>
+</nav>
 
