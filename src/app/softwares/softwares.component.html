@@ -9,7 +9,9 @@
       <hr class="my-3">
     </div>
 
-    <h2 class="text-center mx-5 mb-8">We can deliver what has never mattered more: the ability to curate the best employee experience. Our solutions enable organizations to optimize their real estate, facilitate hybrid-working that engages employees.</h2>
+    <h2 class="text-center mx-5 mb-8">We can deliver what has never mattered more: the ability to curate the best
+      employee experience. Our solutions enable organizations to optimize their real estate, facilitate hybrid-working
+      that engages employees.</h2>
 
     <div class="w-full flex justify-around mt-3 border-t-2">
 
@@ -29,7 +31,9 @@
       <hr class="my-3">
     </div>
 
-    <h2 class="text-center mx-5 mb-8">We can deliver what has never mattered more: the ability to curate the best employee experience. Our solutions enable organizations to optimize their real estate, facilitate hybrid-working that engages employees.</h2>
+    <h2 class="text-center mx-5 mb-8">We can deliver what has never mattered more: the ability to curate the best
+      employee experience. Our solutions enable organizations to optimize their real estate, facilitate hybrid-working
+      that engages employees.</h2>
 
     <div class="w-full flex justify-around mt-3 border-t-2">
 
@@ -38,6 +42,18 @@
       </button>
 
     </div>
+  </div>
+  <div *ngIf="softwareList">
+    <h2>Liste des logiciels :</h2>
+    <ul>
+      <li *ngFor="let software of softwareList">
+        {{ software.name }} - {{ software.description }}
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="!softwareList">
+    <p>Aucun logiciel trouvé.</p>
   </div>
 
 </div>
