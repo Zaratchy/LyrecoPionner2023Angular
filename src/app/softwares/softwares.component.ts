@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {SoftwareService} from "../services/software.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'softwares',
@@ -10,7 +11,7 @@ export class SoftwaresComponent implements OnInit {
 
   softwareList: any[] | undefined;
 
-  constructor(private softwareService: SoftwareService) { }
+  constructor(private softwareService: SoftwareService, private router: Router) { }
 
   ngOnInit(): void {
     this.getAllSoftware()
@@ -26,6 +27,10 @@ export class SoftwaresComponent implements OnInit {
           console.error('Une erreur est survenue lors de la récupération des logiciels :', error);
         }
       );
+  }
+
+  showSoftwareDetail(id: number) {
+    this.router.navigate(['/software', id]);
   }
 
 }
