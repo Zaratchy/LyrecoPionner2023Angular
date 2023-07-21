@@ -11,6 +11,7 @@ import { SoftwaresComponent } from './softwares/softwares.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { DetailsoftwareComponent } from './detailsoftware/detailsoftware.component';
+import { DetailcustomerComponent } from './detailcustomer/detailcustomer.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { DetailsoftwareComponent } from './detailsoftware/detailsoftware.compone
     SoftwaresComponent,
     RegisterComponent,
     LoginComponent,
-    DetailsoftwareComponent
+    DetailsoftwareComponent,
+    DetailcustomerComponent
   ],
   imports: [
     BrowserModule,

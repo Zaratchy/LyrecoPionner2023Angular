@@ -7,10 +7,12 @@ import { SoftwaresComponent } from './softwares/softwares.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { DetailsoftwareComponent } from './detailsoftware/detailsoftware.component';
+import { DetailcustomerComponent } from './detailcustomer/detailcustomer.component';
 
 const routes: Routes = [
   { path: 'software/:id', component: DetailsoftwareComponent },
   { path: 'header', component: HeaderComponent },
+  { path: 'customer/:id', component: DetailcustomerComponent },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
