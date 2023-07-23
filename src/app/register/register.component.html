@@ -1,3 +1,55 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label id="firstName">First Name</label>
+    <input type="text" formControlName="firstName" class="form-control"
+           [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"/>
+    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+      <div *ngIf="f.firstName.errors">First Name is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label id="lastName">Last Name</label>
+    <input type="text" formControlName="lastName" class="form-control"
+           [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"/>
+    <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+      <div *ngIf="f.lastName.errors">Last Name is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label id="phone">phone</label>
+    <input type="text" formControlName="phone" class="form-control"
+           [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"/>
+    <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+      <div *ngIf="f.phone.errors">phone is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label id="email">Email</label>
+    <input type="text" formControlName="email" class="form-control"
+           [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
+    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+      <div *ngIf="f.email.errors">Email is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label id="password">Password</label>
+    <input type="password" formControlName="password" class="form-control"
+           [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+      <div *ngIf="f.password.errors">Password is required</div>
+      <div *ngIf="f.password.errors">Password must be at least 6 characters</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <button [disabled]="loading" class="btn btn-primary">
+      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+      Register
+    </button>
+    <a routerLink="/login" class="btn btn-link">Cancel</a>
+  </div>
+</form>
+
+
 <div class="flex justify-around bg-gray-100 p-6 text-blue-900">
 
   <div class="w-96 mb-8 p-7 rounded-xl border-gray-100 shadow-md bg-white border-1  ">
@@ -20,9 +72,9 @@
 
           <label for="">Civilité :</label>
 
-          <input class="ml-7" type="checkbox" name="" id="">
+          <input class="ml-7" type="checkbox" name="">
           <label class="!m-1" for="">M.</label>
-          <input class="ml-5" type="checkbox" name="" id="">
+          <input class="ml-5" type="checkbox" name="">
           <label class="!m-1" for="">Mme</label>
 
         </div>
@@ -63,7 +115,8 @@
         </div>
 
         <h3 class="font-bold mb-3">Mon entreprise :</h3>
-        <p class="text-xs font-bold">Entrez le nom ou le N° TVA ou SIREN ou SIRET : de votre organisation afin de vérifier votre entreprise. *</p>
+        <p class="text-xs font-bold">Entrez le nom ou le N° TVA ou SIREN ou SIRET : de votre organisation afin de
+          vérifier votre entreprise. *</p>
 
         <div>
 
@@ -94,7 +147,9 @@
 
         <div class="items-center">
 
-          <button class="w-[200px] h-10 mt-5 font-bold bg-[#9AC31C] text-white rounded-md hover:bg-[#a6d31f]" type="submit">Créer un compte</button>
+          <button class="w-[200px] h-10 mt-5 font-bold bg-[#9AC31C] text-white rounded-md hover:bg-[#a6d31f]"
+                  type="submit">Créer un compte
+          </button>
 
         </div>
 
