@@ -10,7 +10,7 @@ export class AuthentificationService {
 
   private currentCustomerSubject: BehaviorSubject<Customer>;
   public currentCustomer: Observable<Customer>;
-  private apiUrl = 'http://localhost:8005/customer';
+  private apiUrl = 'http://localhost:8005';
 
   constructor(private http: HttpClient) {
     // @ts-ignore
@@ -28,23 +28,19 @@ export class AuthentificationService {
       password: password
     };
 
-    // Envoyer la requête POST au serveur pour l'authentification
-    return this.http.post<Customer>(`${this.apiUrl}`, credentials)
+    return this.http.post<Customer>(`${this.apiUrl}/customer`, credentials)
       .pipe(
         tap((customer: Customer) => {
-          // Si l'authentification réussit, enregistrez le token dans le stockage local (localStorage)
           localStorage.setItem('customerToken', customer.token);
         })
       );
   }
 
   logout(): void {
-    // Effacer le token du stockage local lors de la déconnexion
     localStorage.removeItem('customerToken');
   }
 
   isAuthenticated(): boolean {
-    // Vérifier si le client est authentifié en vérifiant la présence du token dans le stockage local
     return !!localStorage.getItem('customerToken');
   }
 

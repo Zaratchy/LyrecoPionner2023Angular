@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
-import {AlertService} from "../services/alert.service";
+import {Router} from "@angular/router";
 import {AuthentificationService} from "../services/authentification.service";
-import {CustomerService} from "../services/customer/customer.service";
-import {first} from "rxjs";
 import {Customer} from "../models/Customer.model";
 
 @Component({
@@ -22,7 +19,6 @@ export class LoginComponent implements OnInit {
   constructor(
       private formBuilder: FormBuilder,
       private AuthentificationService: AuthentificationService,
-      private CustomerService: CustomerService,
       private router: Router,
       ) { }
 
@@ -32,10 +28,8 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     });
 
-    // Vérifier si le client est déjà connecté lors du chargement de la page
     this.isLoggedIn = this.AuthentificationService.isAuthenticated();
 
-    // Si le client est déjà connecté, récupérer ses informations en utilisant l'ID 1 (vous pouvez remplacer 1 par l'ID approprié)
     if (this.isLoggedIn) {
       this.AuthentificationService.getCustomerById(1).subscribe(
         (customer: Customer) => {
@@ -56,10 +50,8 @@ export class LoginComponent implements OnInit {
     const email = this.loginForm.get('email').value;
     const password = this.loginForm.get('password').value;
 
-    // Appeler le service d'authentification pour envoyer les informations de connexion au serveur
     this.AuthentificationService.login(email, password).subscribe(
       (customer: Customer) => {
-        // Authentification réussie : mettre à jour le statut de connexion et récupérer les informations du client
         this.isLoggedIn = true;
         this.customer = customer;
         this.router.navigate(['/home']);
