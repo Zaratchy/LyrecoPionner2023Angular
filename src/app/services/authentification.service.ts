@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Customer } from '../models/Customer.model';
-import {BehaviorSubject, map, Observable} from "rxjs";
+import {BehaviorSubject, map, Observable, tap} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({
@@ -22,14 +22,34 @@ export class AuthentificationService {
     return this.currentCustomerSubject.value;
   }
 
-  login(customername: any, password: any) {
-    return this.http.post<any>(`${this.apiUrl}/users/authenticate`, { customername, password })
-      .pipe(map(customer => {
-        // store user details and jwt token in local storage to keep user logged in between page refreshes
-        localStorage.setItem('currentUser', JSON.stringify(customer));
-        this.currentCustomerSubject.next(customer);
-        return customer;
-      }));
+  login(email: string, password: string): Observable<Customer> {
+    const credentials = {
+      email: email,
+      password: password
+    };
+
+    // Envoyer la requête POST au serveur pour l'authentification
+    return this.http.post<Customer>(`${this.apiUrl}`, credentials)
+      .pipe(
+        tap((customer: Customer) => {
+          // Si l'authentification réussit, enregistrez le token dans le stockage local (localStorage)
+          localStorage.setItem('customerToken', customer.token);
+        })
+      );
   }
 
+  logout(): void {
+    // Effacer le token du stockage local lors de la déconnexion
+    localStorage.removeItem('customerToken');
+  }
+
+  isAuthenticated(): boolean {
+    // Vérifier si le client est authentifié en vérifiant la présence du token dans le stockage local
+    return !!localStorage.getItem('customerToken');
+  }
+
+  getCustomerById(id: number): Observable<Customer> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.get<Customer>(url);
+  }
 }

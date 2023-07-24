@@ -1,27 +1,32 @@
-<h2>Login</h2>
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label id="firstname">firstname</label>
-    <input type="text" formControlName="firstname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }" />
-    <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
-      <div *ngIf="f.firstname.errors">firstname is required</div>
+<div *ngIf="!isLoggedIn">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="email">Email</label>
+      <input type="email" id="email" formControlName="email">
+      <div *ngIf="loginForm.get('email').invalid && loginForm.get('email').touched">
+        <span *ngIf="loginForm.get('email')">Ce champ est obligatoire.</span>
+        <span *ngIf="loginForm.get('email')">Veuillez saisir une adresse email valide.</span>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <label id="password">Password</label>
-    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-      <div *ngIf="f.password.errors">Password is required</div>
+
+    <div>
+      <label for="password">Mot de passe</label>
+      <input type="password" id="password" formControlName="password">
+      <div *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched">
+        <span *ngIf="loginForm.get('password')">Ce champ est obligatoire.</span>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <button [disabled]="loading" class="btn btn-primary">
-      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-      Login
-    </button>
-    <a routerLink="/register" class="btn btn-link">Register</a>
-  </div>
-</form>
+
+    <button type="submit" [disabled]="loginForm.invalid">Se connecter</button>
+  </form>
+</div>
+
+<div *ngIf="isLoggedIn">
+  <h2>Bienvenue, {{ customer.firstName }} {{ customer.lastName }} !</h2>
+  <p>Email : {{ customer.email }}</p>
+  <p>Téléphone : {{ customer.phone }}</p>
+  <button (click)="logout()">Se déconnecter</button>
+</div>
 
 
 <div class="flex justify-around py-36 text-blue-900 ">

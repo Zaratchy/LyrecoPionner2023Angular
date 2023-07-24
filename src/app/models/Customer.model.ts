@@ -1,4 +1,5 @@
 export interface Customer {
+  token: string;
   civility: string;
   credential: {
     histoCredential: {

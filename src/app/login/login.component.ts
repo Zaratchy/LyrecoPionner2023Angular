@@ -3,7 +3,9 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AlertService} from "../services/alert.service";
 import {AuthentificationService} from "../services/authentification.service";
+import {CustomerService} from "../services/customer/customer.service";
 import {first} from "rxjs";
+import {Customer} from "../models/Customer.model";
 
 @Component({
   selector: 'app-login',
@@ -13,60 +15,64 @@ import {first} from "rxjs";
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup | any;
-  loading = false;
-  submitted = false;
-  returnUrl: string | undefined;
-
+  isLoggedIn: boolean = false;
+  customer: Customer | any;
+  f: any;
 
   constructor(
-    private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router,
-    private authentificationService: AuthentificationService,
-    private alertService: AlertService
-  ) {
-    // redirect to home if already logged in
-    if (this.authentificationService.currentCustomerValue) {
-      this.router.navigate(['/']);
-    }
-  }
+      private formBuilder: FormBuilder,
+      private AuthentificationService: AuthentificationService,
+      private CustomerService: CustomerService,
+      private router: Router,
+      ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      firstname: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
 
-    // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    // Vérifier si le client est déjà connecté lors du chargement de la page
+    this.isLoggedIn = this.AuthentificationService.isAuthenticated();
+
+    // Si le client est déjà connecté, récupérer ses informations en utilisant l'ID 1 (vous pouvez remplacer 1 par l'ID approprié)
+    if (this.isLoggedIn) {
+      this.AuthentificationService.getCustomerById(1).subscribe(
+        (customer: Customer) => {
+          this.customer = customer;
+        },
+          (error: any) => {
+          console.error(error);
+        }
+      );
+    }
   }
 
-  // convenience getter for easy access to form fields
-  get f() { return this.loginForm.controls; }
-
   onSubmit() {
-    this.submitted = true;
-
-    // reset alerts on submit
-    this.alertService.clear();
-
-    // stop here if form is invalid
     if (this.loginForm.invalid) {
       return;
     }
 
-    this.loading = true;
-    this.authentificationService.login(this.f['firstname'].value, this.f['password'].value)
-      .pipe(first())
-      .subscribe(
-        data => {
-          this.router.navigate([this.returnUrl]);
-        },
-        error => {
-          this.alertService.error(error);
-          this.loading = false;
-        });
+    const email = this.loginForm.get('email').value;
+    const password = this.loginForm.get('password').value;
 
+    // Appeler le service d'authentification pour envoyer les informations de connexion au serveur
+    this.AuthentificationService.login(email, password).subscribe(
+      (customer: Customer) => {
+        // Authentification réussie : mettre à jour le statut de connexion et récupérer les informations du client
+        this.isLoggedIn = true;
+        this.customer = customer;
+        this.router.navigate(['/home']);
+      },
+      error => {
+        console.error(error);
+      }
+    );
+  }
+
+  logout() {
+    this.AuthentificationService.logout();
+    this.isLoggedIn = false;
   }
 
 }
