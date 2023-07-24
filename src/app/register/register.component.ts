@@ -4,7 +4,6 @@ import {Router} from "@angular/router";
 import {AlertService} from "../services/alert.service";
 import {CustomerService} from "../services/customer/customer.service";
 import {first} from "rxjs";
-import { AuthentificationService } from '../services/authentification.service';
 
 @Component({
   selector: 'app-register',
@@ -20,14 +19,11 @@ export class RegisterComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private authentificationService: AuthentificationService,
     private userService: CustomerService,
     private alertService: AlertService
 
   ) {
-    if (this.authentificationService.currentCustomerValue) {
-      this.router.navigate(['/']);
-    }
+
   }
 
   ngOnInit(): void {
