@@ -13,7 +13,7 @@ const headers= new HttpHeaders({
 })
 export class CustomerService {
 
-  private apiUrl = 'http://localhost:8005/customers';
+  private apiUrl = 'http://localhost:8005/customer';
 
   constructor(private http: HttpClient) { }
 
@@ -22,6 +22,6 @@ export class CustomerService {
     return this.http.get<Customer>(url);
   }
   register(customer: Customer) {
-    return this.http.post(`${this.apiUrl}/create`, customer,{'headers': headers});
+    return this.http.post(`${this.apiUrl}s/create`, customer,{'headers': headers});
   }
 }
