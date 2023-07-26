@@ -12,7 +12,7 @@ import { DetailcustomerComponent } from './detailcustomer/detailcustomer.compone
 const routes: Routes = [
   { path: 'software/:id', component: DetailsoftwareComponent },
   { path: 'header', component: HeaderComponent },
-  { path: 'customer/:id', component: DetailcustomerComponent },
+  { path: 'customers/:id', component: DetailcustomerComponent },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent },

@@ -1,14 +1,7 @@
 export interface Customer {
   token: string;
   civility: string;
-  credential: {
-    histoCredential: {
-      id: number;
-      name: string;
-    };
-    id: number;
-    password: string;
-  };
+  password: string;
   email: string;
   firstName: string;
   id: number;
