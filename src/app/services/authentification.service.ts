@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Customer } from '../models/Customer.model';
-import {BehaviorSubject, map, Observable, tap} from "rxjs";
+import {BehaviorSubject, config, map, Observable, tap} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 const headers= new HttpHeaders({
@@ -16,7 +16,7 @@ export class AuthentificationService {
 
   private currentCustomerSubject: BehaviorSubject<Customer>;
   public currentCustomer: Observable<Customer>;
-  private apiUrl = 'http://localhost:8005/customers/';
+  private apiUrl = 'http://localhost:8005';
 
   constructor(private http: HttpClient) {
     // @ts-ignore
@@ -27,26 +27,9 @@ export class AuthentificationService {
   public get currentCustomerValue(): Customer {
     return this.currentCustomerSubject.value;
   }
-/*
-  login(email: string, password: string): Observable<Customer> {
-    const credentials = {
-      email: email,
-      password: password
-    };
-
-    return this.http.post<Customer>(`${this.apiUrl}/customer`, credentials)
-      .pipe(
-        tap((customer: Customer) => {
-          localStorage.setItem('customerToken', customer.token);
-        })
-      );
-  }
-
-
-*/
 
   login(email: any, password: any) {
-    return this.http.post<any>(this.apiUrl, { email, password }, {'headers': headers})
+    return this.http.post<any>(`${this.apiUrl}/login`, { email, password })
       .pipe(map(customer => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('currentCustomer', JSON.stringify(customer));
@@ -55,26 +38,11 @@ export class AuthentificationService {
       }));
   }
 
-  /*
   logout() {
     // remove user from local storage and set current user to null
-    localStorage.removeItem('currentUser');
-    this.currentUserSubject.next(null);
+    localStorage.removeItem('currentCustomer');
+    // @ts-ignore
+    this.currentCustomerSubject.next(null);
   }
 
-*/
-
-
-  logout(): void {
-    localStorage.removeItem('customerToken');
-  }
-
-  isAuthenticated(): boolean {
-    return !!localStorage.getItem('customerToken');
-  }
-
-  getCustomerById(id: number): Observable<Customer> {
-    const url = `${this.apiUrl}/${id}`;
-    return this.http.get<Customer>(url);
-  }
 }

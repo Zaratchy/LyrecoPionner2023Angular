@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {AuthentificationService} from "../services/authentification.service";
-import {Customer} from "../models/Customer.model";
+import {AlertService} from "../services/alert.service";
+import {first} from "rxjs";
 
 @Component({
   selector: 'app-login',
@@ -12,59 +13,58 @@ import {Customer} from "../models/Customer.model";
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup | any;
-  isLoggedIn: boolean = false;
-  customer: Customer | any;
-  f: any;
+  loading = false;
+  submitted = false;
+  returnUrl: string | any;
 
   constructor(
-      private formBuilder: FormBuilder,
-      private AuthentificationService: AuthentificationService,
-      private router: Router,
-      ) { }
-
-  ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
-    });
-
-    this.isLoggedIn = this.AuthentificationService.isAuthenticated();
-
-    if (this.isLoggedIn) {
-      this.AuthentificationService.getCustomerById(1).subscribe(
-        (customer: Customer) => {
-          this.customer = customer;
-        },
-          (error: any) => {
-          console.error(error);
-        }
-      );
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private authenticationService: AuthentificationService,
+    private alertService: AlertService
+  ) {
+    // redirect to home if already logged in
+    if (this.authenticationService.currentCustomerValue) {
+      this.router.navigate(['/']);
     }
   }
 
+  ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+
+    // get return url from route parameters or default to '/'
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+  }
+
+  // convenience getter for easy access to form fields
+  get f() { return this.loginForm.controls; }
+
   onSubmit() {
+    this.submitted = true;
+
+    // reset alerts on submit
+    this.alertService.clear();
+
+    // stop here if form is invalid
     if (this.loginForm.invalid) {
       return;
     }
 
-    const email = this.loginForm.get('email').value;
-    const password = this.loginForm.get('password').value;
-
-    this.AuthentificationService.login(email, password).subscribe(
-      (customer: Customer) => {
-        this.isLoggedIn = true;
-        this.customer = customer;
-        this.router.navigate(['/home']);
-      },
-      error => {
-        console.error(error);
-      }
-    );
-  }
-
-  logout() {
-    this.AuthentificationService.logout();
-    this.isLoggedIn = false;
+    this.loading = true;
+    this.authenticationService.login(this.f.email.value, this.f.password.value)
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.router.navigate([this.returnUrl]);
+        },
+        error => {
+          this.alertService.error(error);
+          this.loading = false;
+        });
   }
 
 }
