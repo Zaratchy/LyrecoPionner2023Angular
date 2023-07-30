@@ -17,6 +17,10 @@ export class CustomerService {
 
   constructor(private http: HttpClient) { }
 
+  getAll() {
+    return this.http.get<Customer[]>(`${this.apiUrl}`);
+  }
+
   getCustomerById(id: number): Observable<Customer> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.get<Customer>(url);

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Customer } from '../models/Customer.model';
 import {BehaviorSubject, config, map, Observable, tap} from "rxjs";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 
 const headers= new HttpHeaders({
   'Content-type': 'application/json',
@@ -28,8 +28,16 @@ export class AuthentificationService {
     return this.currentCustomerSubject.value;
   }
 
-  login(email: any, password: any) {
-    return this.http.post<any>(`${this.apiUrl}/login`, { email, password })
+  login(email: string, password: string): Observable<any> {
+    const params = new HttpParams()
+      .set('email', email)
+      .set('password', password);
+
+    return this.http.get<any>(this.apiUrl, {'headers': headers, params });
+  }
+/*
+  login(email: string, password: string) {
+    return this.http.post<Customer>(`${this.apiUrl}/login`, { email, password })
       .pipe(map(customer => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('currentCustomer', JSON.stringify(customer));
@@ -37,7 +45,7 @@ export class AuthentificationService {
         return customer;
       }));
   }
-
+*/
   logout() {
     // remove user from local storage and set current user to null
     localStorage.removeItem('currentCustomer');

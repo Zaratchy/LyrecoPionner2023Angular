@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
   returnUrl: string | any;
+  email = 'libert.josic@gmail.com';
+  password = 'Dragon';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,7 +29,21 @@ export class LoginComponent implements OnInit {
     // redirect to home if already logged in
     if (this.authenticationService.currentCustomerValue) {
       this.router.navigate(['/']);
+      this.login();
     }
+  }
+
+  login() {
+    this.authenticationService.login(this.email, this.password).subscribe(
+      (response) => {
+        // Traitez la réponse ici, par exemple, vous pouvez afficher la réponse dans la console
+        console.log(response);
+      },
+      (error) => {
+        // Traitez les erreurs ici, si nécessaire
+        console.error(error);
+      }
+    );
   }
 
   ngOnInit() {

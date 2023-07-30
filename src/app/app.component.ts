@@ -10,7 +10,7 @@ import {AuthentificationService} from "../app/services/authentification.service"
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  currentCustomer: Customer | undefined;
+  currentCustomer: Customer | any;
 
   constructor(
     private router: Router,
