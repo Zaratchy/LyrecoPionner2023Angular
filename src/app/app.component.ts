@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {Customer} from "./models/Customer.model";
 import {Router} from "@angular/router";
 import {AuthentificationService} from "../app/services/authentification.service";
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -12,15 +13,10 @@ import {AuthentificationService} from "../app/services/authentification.service"
 export class AppComponent {
   currentCustomer: Customer | any;
 
-  constructor(
-    private router: Router,
-    private authenticationService: AuthentificationService
-  ) {
-    this.authenticationService.currentCustomer.subscribe(x => this.currentCustomer = x);
+  constructor(private app: AuthentificationService, private http: HttpClient, private router: Router) {
+
+    this.app.authenticate(undefined, undefined);
   }
 
-  logout() {
-    this.authenticationService.logout();
-    this.router.navigate(['/login']);
-  }
+
 }

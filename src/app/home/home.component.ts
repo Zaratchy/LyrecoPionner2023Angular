@@ -3,6 +3,7 @@ import {Customer} from "../models/Customer.model";
 import {AuthentificationService} from "../services/authentification.service";
 import {CustomerService} from "../services/customer/customer.service";
 import {first} from "rxjs";
+import {HttpClient} from "@angular/common/http";
 
 
 @Component({
@@ -12,27 +13,18 @@ import {first} from "rxjs";
 })
 export class HomeComponent implements OnInit {
 
-  currentUser: Customer;
-  private customer: any[] | undefined;
-  customers: any;
+  title = 'Demo';
+  customer = {};
 
-  constructor(
-    private authenticationService: AuthentificationService,
-    private customerService: CustomerService
-  ) {
-    this.currentUser = this.authenticationService.currentCustomerValue;
+  constructor(private app: AuthentificationService, private http: HttpClient) {
+    http.get('http://localhost:8005').subscribe(data => this.customer = data);
   }
+
+  authenticated() { return this.app.authenticated; }
 
   ngOnInit() {
-    this.loadAllUsers();
   }
 
 
-
-  private loadAllUsers() {
-    this.customerService.getAll()
-      .pipe(first())
-      .subscribe(users => this.customers = this.customer);
-  }
 
 }

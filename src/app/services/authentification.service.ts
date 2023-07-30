@@ -14,43 +14,23 @@ const headers= new HttpHeaders({
 })
 export class AuthentificationService {
 
-  private currentCustomerSubject: BehaviorSubject<Customer>;
-  public currentCustomer: Observable<Customer>;
+  authenticated = false;
   private apiUrl = 'http://localhost:8005';
 
   constructor(private http: HttpClient) {
-    // @ts-ignore
-    this.currentCustomerSubject = new BehaviorSubject<Customer>(JSON.parse(localStorage.getItem('currentCustomer')));
-    this.currentCustomer = this.currentCustomerSubject.asObservable();
   }
 
-  public get currentCustomerValue(): Customer {
-    return this.currentCustomerSubject.value;
-  }
+  authenticate(credentials: { email: any; password: any; } | undefined, callback: { (): void; (): any; } | undefined) {
 
-  login(email: string, password: string): Observable<any> {
-    const params = new HttpParams()
-      .set('email', email)
-      .set('password', password);
+    const headers = new HttpHeaders(credentials ? {
+      authorization : 'Basic ' + btoa(credentials.email + ':' + credentials.password)
+    } : {});
 
-    return this.http.get<any>(this.apiUrl, {'headers': headers, params });
-  }
-/*
-  login(email: string, password: string) {
-    return this.http.post<Customer>(`${this.apiUrl}/login`, { email, password })
-      .pipe(map(customer => {
-        // store user details and jwt token in local storage to keep user logged in between page refreshes
-        localStorage.setItem('currentCustomer', JSON.stringify(customer));
-        this.currentCustomerSubject.next(customer);
-        return customer;
-      }));
-  }
-*/
-  logout() {
-    // remove user from local storage and set current user to null
-    localStorage.removeItem('currentCustomer');
-    // @ts-ignore
-    this.currentCustomerSubject.next(null);
+    this.http.get('login', {headers: headers}).subscribe(response => {
+
+      return callback && callback();
+    });
+
   }
 
 }
