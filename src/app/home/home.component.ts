@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Customer} from "../models/Customer.model";
-import {AuthentificationService} from "../services/authentification.service";
-import {CustomerService} from "../services/customer/customer.service";
-import {first} from "rxjs";
-import {HttpClient} from "@angular/common/http";
+
 
 
 @Component({
@@ -13,13 +9,11 @@ import {HttpClient} from "@angular/common/http";
 })
 export class HomeComponent implements OnInit {
 
-  customer = {};
 
-  constructor(private app: AuthentificationService, private http: HttpClient) {
-    http.get('http://localhost:8005').subscribe(data => this.customer = data);
+
+  constructor() {
   }
 
-  authenticated() { return this.app.authenticated; }
 
   ngOnInit() {
   }
