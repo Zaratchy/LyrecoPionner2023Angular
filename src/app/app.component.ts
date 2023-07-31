@@ -1,8 +1,4 @@
 import { Component } from '@angular/core';
-import {Customer} from "./models/Customer.model";
-import {Router} from "@angular/router";
-import {AuthentificationService} from "../app/services/authentification.service";
-import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -11,11 +7,9 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  currentCustomer: Customer | any;
 
-  constructor(private app: AuthentificationService, private http: HttpClient, private router: Router) {
+  constructor() {
 
-    this.app.authenticate(undefined, undefined);
   }
 
 

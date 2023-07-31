@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  isMenuOpen: boolean = false;
+  isMenuOpen: boolean = true
 
   constructor() { }
 

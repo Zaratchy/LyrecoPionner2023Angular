@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AuthentificationService} from "../services/authentification.service";
 import {Customer} from "../models/Customer.model";
-import {HttpClient} from "@angular/common/http";
+import {LocalStorageService} from "../services/local-storage.service";
 
 @Component({
   selector: 'app-login',
@@ -12,20 +12,47 @@ import {HttpClient} from "@angular/common/http";
 })
 export class LoginComponent implements OnInit {
 
+  loginForm: FormGroup | any;
+  loading = false;
+
+  constructor(private authentificationService: AuthentificationService,
+              private router: Router,
+              private localStorageService: LocalStorageService,
+              private formBuilder: FormBuilder,) {
+  }
+
   ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
   }
 
-  customer = {email: '', password: ''};
-
-  constructor(private app: AuthentificationService, private http: HttpClient, private router: Router) {
-  }
 
   login() {
-    this.app.authenticate(this.customer, () => {
-      this.router.navigateByUrl('/');
-    });
-    return false;
+    console.log(this.loginForm.value);
+    this.loading = true;
+    this.authentificationService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe(
+      (customer: Customer) => {
+        if (customer) {
+          this.localStorageService.set('customerId', JSON.stringify(customer.id))
+          console.log("Success connect", customer);
+          this.loading = false;
+          this.router.navigate(['/home']);
+        } else {
+          console.log("Error connect");
+          this.loading = false;
+          alert("Incorrect credentials");
+        }
+      },
+      (error) => {
+        console.error("Error connect :", error);
+        this.loading = false;
+        alert("An error occurred while logging in.");
+      }
+    );
   }
+
 
 
 }

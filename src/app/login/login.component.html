@@ -1,18 +1,12 @@
-<div class="alert alert-danger" >
-  There was a problem logging in. Please try again.
-</div>
-<form role="form" (submit)="login()">
-  <div class="form-group">
-    <label for="email">Email:</label>
-    <input type="text" class="form-control" id="email" name="email" [(ngModel)]="customer.email"/>
-  </div>
-  <div class="form-group">
-    <label for="password">Password:</label> <input type="password"
-                                                   class="form-control" id="password" name="password" [(ngModel)]="customer.password"/>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+  <label id="email">Email:</label>
+  <input type="email" formControlName="email">
 
+  <label id="password">Mot de passe:</label>
+  <input type="password" formControlName="password">
+
+  <button type="button" (click)="login()">Login</button>
+</form>
 <!--
 
 <div class="flex justify-around py-36 text-blue-900 ">
