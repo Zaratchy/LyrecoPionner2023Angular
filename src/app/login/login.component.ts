@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {AuthentificationService} from "../services/authentification.service";
+import {AuthentificationService} from "../services/authentification/authentification.service";
 import {Customer} from "../models/Customer.model";
-import {LocalStorageService} from "../services/local-storage.service";
+import {LocalStorageService} from "../services/localStorage/local-storage.service";
 
 @Component({
   selector: 'app-login',

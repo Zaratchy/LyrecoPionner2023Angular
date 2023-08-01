@@ -13,7 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { DetailsoftwareComponent } from './detailsoftware/detailsoftware.component';
 import { DetailcustomerComponent } from './detailcustomer/detailcustomer.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {AuthentificationService} from "./services/authentification.service";
+import {AuthentificationService} from "./services/authentification/authentification.service";
 
 @Injectable()
 export class XhrInterceptor implements HttpInterceptor {

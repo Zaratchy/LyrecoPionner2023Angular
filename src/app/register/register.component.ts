@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {AlertService} from "../services/alert.service";
+import {AlertService} from "../services/_alert/alert.service";
 import {CustomerService} from "../services/customer/customer.service";
 import {first} from "rxjs";
-import { AuthentificationService } from '../services/authentification.service';
+import { AuthentificationService } from '../services/authentification/authentification.service';
 
 @Component({
   selector: 'app-register',
