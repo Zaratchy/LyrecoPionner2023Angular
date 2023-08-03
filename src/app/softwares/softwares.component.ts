@@ -3,7 +3,7 @@ import {SoftwareService} from "../services/software/software.service";
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'softwares',
+  selector: 'app-softwares',
   templateUrl: './softwares.component.html',
   styleUrls: ['./softwares.component.scss']
 })

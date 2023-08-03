@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'softwares', component: SoftwaresComponent },
   { path: 'navbar', component: NavbarComponent },
- /* { path: '',   redirectTo: '/app-home', pathMatch: 'full' },*/
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
 
 ];
 
