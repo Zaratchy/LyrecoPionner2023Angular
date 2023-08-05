@@ -7,5 +7,9 @@ export interface Customer {
   id: number;
   lastName: string;
   phone: string;
+  role: {
+    id: number;
+    name: string;
+  };
 
 }
