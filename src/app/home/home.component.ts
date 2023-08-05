@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
 import {AuthentificationService} from "../services/authentification/authentification.service";
+import {CustomerService} from "../services/customer/customer.service";
+import {first} from "rxjs";
+import {Customer} from "../models/Customer.model";
+import {Router} from "@angular/router";
 
 
 
@@ -11,15 +14,20 @@ import {AuthentificationService} from "../services/authentification/authentifica
 })
 export class HomeComponent implements OnInit {
 
+  currentCustomer: Customer;
+  customer: Customer[] | any;
 
-
-  constructor(public authentificationService:AuthentificationService) {
+  constructor(public authentificationService:AuthentificationService,
+              public router:Router) {
+    this.currentCustomer = this.authentificationService.currentCustomerValue;
   }
 
 
   ngOnInit() {
-    console.log(this.authentificationService.isAuthenticated+" Connect on home")
-    console.log(this.authentificationService.isLoggedIn())
+  }
+
+  showCustomer(id: number){
+      this.router.navigate(['/customers', id]);
   }
 
 

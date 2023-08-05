@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Customer } from '../../models/Customer.model';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
+import {LocalStorageService} from "../localStorage/local-storage.service";
+import {BehaviorSubject, map, Observable} from "rxjs";
 
 
 @Injectable({
@@ -9,11 +11,17 @@ import {Router} from "@angular/router";
 })
 export class AuthentificationService {
 
+  private currentCustomerSubject: BehaviorSubject<Customer> | any;
+  public currentCustomer: Observable<Customer>;
   public isAuthenticated = false;
 
   private apiUrl = 'http://localhost:8005';
 
-  constructor(private http: HttpClient, public router:Router) {
+  constructor(private http: HttpClient,
+              public router:Router,
+              private localStorageService: LocalStorageService) {
+    this.currentCustomerSubject = new BehaviorSubject<Customer>(JSON.parse(<string>localStorageService.get('customerId')));
+    this.currentCustomer = this.currentCustomerSubject.asObservable();
   }
 
   login(email: string, password: string) {
@@ -21,19 +29,29 @@ export class AuthentificationService {
     console.log(credential)
     this.isAuthenticated = true;
     console.log(this.isAuthenticated)
-    return this.http.post<Customer>(`${this.apiUrl}/login`, credential);
+    return this.http.post<Customer>(`${this.apiUrl}/login`, credential)
+      .pipe(map(customer => {
+        // store user details and jwt token in local storage to keep user logged in between page refreshes
+        this.localStorageService.set('customerId', JSON.stringify(customer.id));
+        this.currentCustomerSubject.next(customer);
+        return customer;
+      }));
 
+  }
+
+  public get currentCustomerValue(): Customer {
+    return this.currentCustomerSubject.value;
+  }
+
+  logout(): void {
+    this.isAuthenticated = false;
+    console.log(this.isAuthenticated)
+    this.localStorageService.remove('customerId');
+    this.currentCustomerSubject.next(null);
   }
 
   isLoggedIn(): boolean {
     return this.isAuthenticated;
   }
-
-
-
-  logout(): void {
-    this.isAuthenticated = false;
-  }
-
 
 }
