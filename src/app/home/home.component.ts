@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthentificationService} from "../services/authentification/authentification.service";
-import {CustomerService} from "../services/customer/customer.service";
-import {first} from "rxjs";
 import {Customer} from "../models/Customer.model";
 import {Router} from "@angular/router";
 

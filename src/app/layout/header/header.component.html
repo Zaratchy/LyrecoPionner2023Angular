@@ -6,8 +6,9 @@
       alt="avatar">
   </div>
   <div class="flex items-center mr-4">
-    <a class="px-3 py-1 text-[#2C2E87]"routerLinkActive="active" [routerLink]="['/register']">Register</a>
-    <a class="px-3 py-1 text-[#2C2E87]" routerLinkActive="active" [routerLink]="['/login']">Login</a>
+    <a class="px-3 py-1 text-[#2C2E87] hover:text-[#6D6EBD]" routerLinkActive="active" *ngIf="!isLoggedIn()" [routerLink]="['/register']">Register</a>
+    <a class="px-3 py-1 text-[#2C2E87] hover:text-[#6D6EBD]" routerLinkActive="active" *ngIf="!isLoggedIn()" [routerLink]="['/login']">Login</a>
+    <a class="px-3 py-1 text-[#2C2E87] hover:text-[#6D6EBD]" *ngIf="isLoggedIn()" (click)="logout()" >Déconnexion</a>
   </div>
 </div>
 <app-navbar></app-navbar>

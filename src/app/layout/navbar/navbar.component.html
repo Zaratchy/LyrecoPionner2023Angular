@@ -8,7 +8,6 @@
       <a class="rounded-md px-3 py-1 font-medium hover:bg-[#797AAA] hover:text-white" [routerLink]="['/Detailcustomer']">Detailcustomer</a>
 
       <a class="rounded-md px-3 py-1 font-medium hover:bg-[#797AAA] hover:text-white" [routerLink]="['/softwares']">Software list</a>
-      <a class="rounded-md px-3 py-1 font-medium hover:bg-[#797AAA] hover:text-white" (click)="logout()">Déconnexion</a>
     </div>
 
     <button *ngIf="!isMenuOpen"
@@ -27,7 +26,6 @@
   <div *ngIf="isMenuOpen" class="flex flex-col bg-[#2D2E87] p-2 text-gray-300 sm:hidden">
     <a class="rounded-md px-3 py-1 font-medium hover:bg-[#797AAA] hover:text-white" [routerLink]="['/home']">Home</a>
     <a class="rounded-md px-3 py-1 font-medium hover:bg-[#797AAA] hover:text-white" [routerLink]="['/softwares']">Software</a>
-    <a class="rounded-md px-3 py-1 font-medium hover:bg-[#797AAA] hover:text-white" (click)="logout()" >Déconnexion</a>
   </div>
 </nav>
 

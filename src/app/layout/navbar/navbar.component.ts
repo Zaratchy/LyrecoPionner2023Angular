@@ -12,11 +12,8 @@ import {Customer} from "../../models/Customer.model";
 export class NavbarComponent implements OnInit {
 
   isMenuOpen: boolean = true
-  currentCustomer: Customer | any;
 
-  constructor(private authentificationService : AuthentificationService,
-              public router:Router) {
-    this.authentificationService.currentCustomer.subscribe(x => this.currentCustomer = x);
+  constructor(public router:Router) {
   }
 
   ngOnInit(): void {
@@ -27,9 +24,5 @@ export class NavbarComponent implements OnInit {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
-  logout() {
-    this.authentificationService.logout();
-    this.router.navigate(['/login']);
-  }
 
 }

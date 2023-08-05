@@ -8,11 +8,12 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { DetailsoftwareComponent } from './detailsoftware/detailsoftware.component';
 import { DetailcustomerComponent } from './detailcustomer/detailcustomer.component';
+import { AuthguardService } from "./services/authentification/authguard.service";
 
 const routes: Routes = [
   { path: 'software/:id', component: DetailsoftwareComponent },
   { path: 'header', component: HeaderComponent },
-  { path: 'customers/:id', component: DetailcustomerComponent },
+  { path: 'customers/:id', component: DetailcustomerComponent, canActivate: [AuthguardService] },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent },

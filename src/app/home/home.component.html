@@ -1,14 +1,11 @@
-<div *ngIf="currentCustomer">
-  <a class="" >Hi {{currentCustomer.firstName}} {{currentCustomer.lastName}}</a>
-  <button (click)="showCustomer(currentCustomer.id)" class="">
-    <p class="">LEARN MORE</p>
-  </button>
-</div>
-
-
-
-
 <div class="mx-10 my-20">
+
+  <div class="text-center" *ngIf="currentCustomer">
+    <a class="leading-10 tracking-widest" >Hello {{currentCustomer.firstName}} {{currentCustomer.lastName}},</a>
+    <button (click)="showCustomer(currentCustomer.id)" class="">
+      <p class="">LEARN MORE</p>
+    </button>
+  </div>
 
   <h1 class="text-center leading-10 tracking-widest">Welcome to DigitalizePro,
     We offer you a selection of our best digital solutions.
