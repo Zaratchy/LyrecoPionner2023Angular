@@ -33,7 +33,8 @@ export class RegisterComponent implements OnInit {
       lastName: ['', Validators.required],
       email: ['', Validators.required],
       phone: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      role: {id:2}
     });
   }
 
@@ -62,6 +63,7 @@ export class RegisterComponent implements OnInit {
           this.alertService.error(error);
           this.loading = false;
         });
+
   }
 
 }
