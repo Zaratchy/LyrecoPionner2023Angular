@@ -17,10 +17,15 @@ export class CartComponent implements OnInit {
     this.cartItems = this.cartService.getCartItems();
   }
 
+  private saveCartToStorage(): void {
+    localStorage.setItem('cart', JSON.stringify(this.cartItems));
+  }
+
   removeFromCart(item: Software): void {
     const index = this.cartItems.indexOf(item);
     if (index !== -1) {
       this.cartItems.splice(index, 1);
+      this.saveCartToStorage();
     }
   }
 
