@@ -9,9 +9,11 @@ import { LoginComponent } from './login/login.component';
 import { DetailsoftwareComponent } from './detailsoftware/detailsoftware.component';
 import { DetailcustomerComponent } from './detailcustomer/detailcustomer.component';
 import { AuthguardService } from "./services/authentification/authguard.service";
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
   { path: 'software/:id', component: DetailsoftwareComponent },
+  { path: 'cart', component: CartComponent },
   { path: 'header', component: HeaderComponent },
   { path: 'customers/:id', component: DetailcustomerComponent, canActivate: [AuthguardService] },
   { path: 'login', component: LoginComponent },

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {CustomerService} from '../services/customer/customer.service';
 import {Customer} from '../models/Customer.model';
 
@@ -15,7 +15,6 @@ export class DetailcustomerComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private customerService: CustomerService,
-    private router: Router
   ) {
   }
 
@@ -30,6 +29,9 @@ export class DetailcustomerComponent implements OnInit {
       this.customerService.getCustomerById(customerId).subscribe((customer) => {
         this.customer = customer;
       });
+    } else {
+      console.error('Erreur lors de la récupération de l\'utilisateur');
+
     }
 
   }

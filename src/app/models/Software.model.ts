@@ -11,8 +11,8 @@ export class Software {
     public secondDetail?: string,
     public screenOne?: string,
     public screentwo?: string,
-    public idPrice?: number,
-    public idLangage?: number
+    public price?: string,
+    public langage?: string
   ) {
   }
 }

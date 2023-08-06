@@ -2,4 +2,9 @@
 <div *ngIf="software">
   <h2>{{ software.name }}</h2>
   <p>{{ software.description }}</p>
+  <p>{{ software.label }}</p>
+  <p>{{ software.langage }}</p>
+  <p>{{ software.price }}</p>
+  <p>{{ software.releaseDate }}</p>
+  <button (click)="addToCart(software)">Add to Cart</button>
 </div>

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Software} from "../models/Software.model";
 import {SoftwareService} from "../services/software/software.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {CartService} from "../services/cart/cart.service";
+import {AuthentificationService} from "../services/authentification/authentification.service";
 
 @Component({
   selector: 'app-detailsoftware',
@@ -14,8 +16,10 @@ export class DetailsoftwareComponent implements OnInit {
 
   constructor(
     private softwareService: SoftwareService,
+    private cartService: CartService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private authentificationService: AuthentificationService
   ) {}
 
   ngOnInit() {
@@ -29,6 +33,17 @@ export class DetailsoftwareComponent implements OnInit {
       this.softwareService.getSoftwareDetail(softwareId).subscribe((software) => {
         this.software = software;
       });
+    }
+  }
+
+  addToCart(item: Software): void {
+    if (this.authentificationService.isLoggedIn()) {
+      this.cartService.addToCart(item);
+      console.log(this.cartService);
+      this.router.navigate(['cart']);
+    } else {
+      console.log("Customer not connecting !");
+      this.router.navigate(['login']);
     }
   }
 
