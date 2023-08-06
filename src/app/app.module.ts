@@ -15,6 +15,7 @@ import { DetailcustomerComponent } from './detailcustomer/detailcustomer.compone
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AuthentificationService } from "./services/authentification/authentification.service";
 import { CartComponent } from './cart/cart.component';
+import { MySoftwareComponent } from './dashboard/my-software/my-software.component';
 
 @Injectable()
 export class XhrInterceptor implements HttpInterceptor {
@@ -38,7 +39,8 @@ export class XhrInterceptor implements HttpInterceptor {
     LoginComponent,
     DetailsoftwareComponent,
     DetailcustomerComponent,
-    CartComponent
+    CartComponent,
+    MySoftwareComponent
   ],
   imports: [
     BrowserModule,

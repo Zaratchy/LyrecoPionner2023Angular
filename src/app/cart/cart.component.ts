@@ -29,4 +29,9 @@ export class CartComponent implements OnInit {
     }
   }
 
+  checkout(): void {
+    this.cartService.checkout();
+    this.cartItems = this.cartService.getCartItems();
+  }
+
 }

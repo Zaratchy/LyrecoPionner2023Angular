@@ -48,7 +48,7 @@ export class DetailsoftwareComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['/']);
+    this.router.navigate(['softwares']);
   }
 
 }

@@ -2,9 +2,7 @@
 
   <div class="text-center" *ngIf="currentCustomer">
     <a class="leading-10 tracking-widest" >Hello {{currentCustomer.firstName}} {{currentCustomer.lastName}},</a>
-    <button (click)="showCustomer(currentCustomer.id)" class="">
-      <p class="">LEARN MORE</p>
-    </button>
+    <button (click)="showCustomer(currentCustomer.id)" class="">LEARN MORE</button>
   </div>
 
   <h1 class="text-center leading-10 tracking-widest">Welcome to DigitalizePro,

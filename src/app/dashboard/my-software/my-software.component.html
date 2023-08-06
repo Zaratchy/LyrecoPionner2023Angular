@@ -1,0 +1,13 @@
+<p>my-software works!</p>
+
+<div *ngIf="purchasedItems.length > 0">
+  <h2>Your Purchased Software</h2>
+  <ul>
+    <li *ngFor="let item of purchasedItems">
+      {{ item.name }} - ${{ item.price }}
+    </li>
+  </ul>
+</div>
+<div *ngIf="purchasedItems.length === 0">
+  <p>No purchased software yet.</p>
+</div>

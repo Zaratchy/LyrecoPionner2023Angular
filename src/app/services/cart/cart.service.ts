@@ -7,6 +7,7 @@ import {Software} from "../../models/Software.model";
 export class CartService {
 
   private cartItems: Software[] = [];
+  private purchasedItems: Software[] = [];
 
   constructor() {
     const storedCart = localStorage.getItem('cart');
@@ -26,6 +27,16 @@ export class CartService {
 
   getCartItems(): Software[] {
     return this.cartItems;
+  }
+
+  checkout(): void {
+    this.purchasedItems = [...this.cartItems];
+    this.cartItems = [];
+    this.saveCartToStorage();
+  }
+
+  getPurchasedItems(): Software[] {
+    return this.purchasedItems;
   }
 
   clearCart(): void {
