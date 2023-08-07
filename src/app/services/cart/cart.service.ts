@@ -29,7 +29,8 @@ export class CartService {
     return this.cartItems;
   }
 
-  checkout(): void {
+  buyCart(): void {
+    this.cartItems.push();
     this.purchasedItems = [...this.cartItems];
     this.cartItems = [];
     this.saveCartToStorage();
