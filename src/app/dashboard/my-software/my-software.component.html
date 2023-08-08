@@ -1,18 +1,3 @@
-<p>my-software works!</p>
-
-<div *ngIf="purchasedItems.length > 0">
-  <h2>Your Purchased Software</h2>
-  <ul>
-    <li *ngFor="let item of purchasedItems">
-      {{ item.name }} - ${{ item.price }}
-    </li>
-  </ul>
-</div>
-<div *ngIf="purchasedItems.length === 0">
-  <p>No purchased software yet.</p>
-</div>
-
-
 <div *ngIf="purchasedItems.length > 0" class="flex justify-around flex-wrap p-6">
 
   <div *ngFor="let item of purchasedItems" class="w-80 mb-8 flex items-center flex-col rounded-xl border-gray-100 shadow-md bg-white border-1  ">

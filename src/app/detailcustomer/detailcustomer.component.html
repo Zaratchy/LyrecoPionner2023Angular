@@ -1,9 +1,12 @@
-<div *ngIf="customer">
-  <h2>Informations du client</h2>
-  <p>Civilité : {{ customer.civility }}</p>
-  <p>Prénom : {{ customer.firstName }}</p>
-  <p>Nom : {{ customer.lastName }}</p>
-  <p>Email : {{ customer.email }}</p>
-  <p>Téléphone : {{ customer.phone }}</p>
-  <p>Role : {{ customer.role.name }}</p>
+<div class="text-center my-32" *ngIf="customer">
+  <h2 class="font-bold">My profil</h2>
+  <p class="my-10">Civilité : {{ customer.civility }}</p>
+  <p class="my-10">Prénom : {{ customer.firstName }}</p>
+  <p class="my-10">Nom : {{ customer.lastName }}</p>
+  <p class="my-10">Email : {{ customer.email }}</p>
+  <p class="my-10">Téléphone : {{ customer.phone }}</p>
+  <p class="my-10">Role : {{ customer.role.name }}</p>
+
 </div>
+
+
