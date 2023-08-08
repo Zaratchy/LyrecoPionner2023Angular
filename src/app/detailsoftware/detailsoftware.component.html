@@ -1,12 +1,72 @@
-<h1>software</h1>
-<div *ngIf="software">
-  <h2>{{ software.name }}</h2>
-  <p>{{ software.description }}</p>
-  <p>{{ software.label }}</p>
-  <p>{{ software.langage }}</p>
-  <p>{{ software.price }}</p>
-  <p>{{ software.releaseDate }}</p>
-  <button (click)="addToCart(software)">Add to Cart</button>
-  <button (click)="goBack()">Back</button>
+<button class="mt-2 ml-5" (click)="goBack()">Back</button>
+
+<div class=" md:flex lg:justify-center" >
+
+  <div *ngIf="software" class="lg:mx-10 ">
+    <div>
+      <img src="https://www.afreespace.com/wp-content/uploads/2017/09/Freespace-Logo-250-x-100-1.png"
+           class="w-60 h-24">
+    </div>
+    <hr class="border-[#9AC31C]">
+    <div class="mx-10 my-5">
+      <div class="my-5">
+        <h2 class="my-6 text-[#5B5579] font-bold">Description :</h2>
+        <p>{{ software.description }}</p>
+      </div>
+      <div class="md:flex ">
+        <div class="flex lg:mr-40">
+          <div class="mr-16">
+            <p class="my-7 text-[#5B5579] font-bold">Labels</p>
+            <p class="my-7 text-[#5B5579] font-bold">Release date</p>
+            <p class="my-7 text-[#5B5579] font-bold">Languages</p>
+            <p class="my-7 text-[#5B5579] font-bold">Price</p>
+          </div>
+          <div class="mr-1">
+            <p class="my-7">{{ software.label }}</p>
+            <p class="my-7">{{ software.releaseDate }}</p>
+            <p class="my-7">{{ software.langage }}</p>
+            <p class="my-7">{{ software.price }}</p>
+          </div>
+        </div>
+        <div>
+          <img src="https://www.infoburomag.com/uploads/media/image/0001/45/1c291d22a6368d02e489d6352d108a45c6eb3776.jpeg"
+               class="md:hidden sm:block lg:block" alt="" srcset="">
+        </div>
+      </div>
+    </div>
+    <hr class="border-[#9AC31C]">
+    <div class="mx-10">
+      <h2 class="my-6 text-[#5B5579] font-bold">About Us</h2>
+      <p>{{ software.description }}</p>
+    </div>
+  </div>
+
+
+  <div class="mx-5" *ngIf="software">
+
+    <div class="flex justify-around py-36 text-blue-900 ">
+      <div class="w-80 px-7 pt-5 rounded-xl shadow-md">
+        <div>
+          <h1 class="title">Your options</h1>
+        </div>
+        <div class="py-2">
+          <form class="text-sm" >
+            <div>
+              <label  class="font-bold mb-2">Number of licences :</label>
+              <input>
+            </div>
+            <div>
+              <label id="password" class="font-bold mb-2">Commitment (period)</label>
+              <input type="password" >
+            </div>
+            <div class="items-center">
+              <button (click)="addToCart(software)" class="w-[200px] h-10 mt-5 font-bold bg-[#9AC31C] text-white rounded-md hover:bg-[#a6d31f]" type="button">Ajouter au panier {{ software.name }}</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
 
 </div>
