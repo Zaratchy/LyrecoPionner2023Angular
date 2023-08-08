@@ -11,3 +11,32 @@
 <div *ngIf="purchasedItems.length === 0">
   <p>No purchased software yet.</p>
 </div>
+
+
+<div *ngIf="purchasedItems.length > 0" class="flex justify-around flex-wrap p-6">
+
+  <div *ngFor="let item of purchasedItems" class="w-80 mb-8 flex items-center flex-col rounded-xl border-gray-100 shadow-md bg-white border-1  ">
+    <h2 class="font-bold mt-5 text-xl">{{ item.name }}</h2>
+    <div class="mt-3 mb-8">
+      <hr class="my-3">
+      <img src="https://www.afreespace.com/wp-content/uploads/2017/09/Freespace-Logo-250-x-100-1.png"
+           class="w-60 h-24">
+      <hr class="my-3">
+    </div>
+
+    <h2 class="text-center mx-5 mb-8">{{ item.description }}</h2>
+
+    <div class="w-full flex justify-around mt-3 border-t-2">
+
+      <button (click)="showSoftwareDetail(item.id)" class="flex w-full justify-center pt-4 pb-4 rounded-bl-md border-r-2 bg-[#9AC31C] hover:bg-[#A5D01F]">
+        <p class="font-bold ml-4 text-amber-50">LEARN MORE</p>
+      </button>
+
+    </div>
+  </div>
+</div>
+
+<div *ngIf="purchasedItems.length === 0">
+  <p>Aucun logiciel trouvé.</p>
+</div>
+
