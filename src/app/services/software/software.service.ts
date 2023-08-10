@@ -23,4 +23,9 @@ export class SoftwareService {
     return this.http.get<Software>(this.apiUrl + `/software/${id}`);
   }
 
+  deleteSoftware(id: number): Observable<any> {
+    const url = `${this.apiUrl}/softwares/delete/${id}`;
+    return this.http.delete(url);
+  }
+
 }
