@@ -13,6 +13,8 @@ import { CartComponent } from './cart/cart.component';
 import { MySoftwareComponent } from './dashboard/my-software/my-software.component';
 import { AdminComponent } from './dashboard/admin/admin.component';
 import { CrudSoftwareComponent } from './dashboard/admin/crud-software/crud-software.component';
+import { UpdateSoftwareComponent } from './dashboard/admin/crud-software/update-software/update-software.component';
+import { CreateSoftwareComponent } from './dashboard/admin/crud-software/create-software/create-software.component';
 
 
 const routes: Routes = [
@@ -22,8 +24,11 @@ const routes: Routes = [
   { path: 'customers/:id', component: DetailcustomerComponent, canActivate: [AuthguardService] },
   { path: 'my-softwares', component: MySoftwareComponent, canActivate: [AuthguardService] },
   { path: 'admin', component: AdminComponent },
-  { path: 'admin-software', component: CrudSoftwareComponent },
+  { path: 'update-software', component: AdminComponent },
+  { path: 'admin-software', component: UpdateSoftwareComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'admin-software', component: CrudSoftwareComponent },
+  { path: 'admin-create-software', component: CreateSoftwareComponent },
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'softwares', component: SoftwaresComponent },

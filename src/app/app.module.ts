@@ -18,6 +18,8 @@ import { CartComponent } from './cart/cart.component';
 import { MySoftwareComponent } from './dashboard/my-software/my-software.component';
 import { AdminComponent } from './dashboard/admin/admin.component';
 import { CrudSoftwareComponent } from './dashboard/admin/crud-software/crud-software.component';
+import { UpdateSoftwareComponent } from './dashboard/admin/crud-software/update-software/update-software.component';
+import { CreateSoftwareComponent } from './dashboard/admin/crud-software/create-software/create-software.component';
 
 @Injectable()
 export class XhrInterceptor implements HttpInterceptor {
@@ -44,7 +46,9 @@ export class XhrInterceptor implements HttpInterceptor {
     CartComponent,
     MySoftwareComponent,
     AdminComponent,
-    CrudSoftwareComponent
+    CrudSoftwareComponent,
+    UpdateSoftwareComponent,
+    CreateSoftwareComponent
   ],
   imports: [
     BrowserModule,

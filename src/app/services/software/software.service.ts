@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Software} from "../../models/Software.model";
+import {Customer} from "../../models/Customer.model";
 
 const headers= new HttpHeaders({
   'Content-type': 'application/json',
@@ -26,6 +27,15 @@ export class SoftwareService {
   deleteSoftware(id: number): Observable<any> {
     const url = `${this.apiUrl}/softwares/delete/${id}`;
     return this.http.delete(url);
+  }
+
+  updateSoftware(id: number, updatedData: any): Observable<any> {
+    const url = `${this.apiUrl}/softwares/update/${id}`; // Utilisez le chemin correct pour la mise à jour
+    return this.http.put(url, updatedData);
+  }
+
+  createSoftware(software: Software) {
+    return this.http.post(`${this.apiUrl}/softwares/create`, software,{'headers': headers});
   }
 
 }

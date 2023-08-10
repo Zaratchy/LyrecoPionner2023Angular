@@ -1,0 +1,48 @@
+<p>create-software works!</p>
+<div class="flex mt-20 justify-around p-6 text-blue-900">
+
+  <div class="w-96 mb-8 p-7 rounded-xl border-gray-100 shadow-md bg-white border-1  ">
+
+    <div class="text-center">
+
+      <h1 class="title">Créer un compte Lyreco, c'est simple et rapide !</h1>
+
+    </div>
+
+
+    <div class="p-4">
+
+      <form class="text-sm" [formGroup]="softwareForm" (ngSubmit)="onSubmit()">
+
+        <h3 class="font-bold mb-3">Mes informations personnelles :</h3>
+
+        <div>
+
+          <label id="name">Prénom : *</label>
+          <input type="text" formControlName="name" class="form-control"
+                 />
+
+        </div>
+
+        <div class="items-center">
+
+          <button  class="w-[200px] h-10 mt-5 font-bold bg-[#9AC31C] text-white rounded-md hover:bg-[#a6d31f]"
+                  type="submit">
+            <span  class="spinner-border spinner-border-sm mr-1"></span>
+            Créer un compte
+          </button>
+
+          <a routerLink="/login" class="btn btn-link">Cancel</a>
+
+        </div>
+
+      </form>
+
+
+    </div>
+
+
+  </div>
+
+</div>
+
