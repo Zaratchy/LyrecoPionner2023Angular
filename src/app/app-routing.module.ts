@@ -11,6 +11,8 @@ import { DetailcustomerComponent } from './detailcustomer/detailcustomer.compone
 import { AuthguardService } from "./services/authentification/authguard.service";
 import { CartComponent } from './cart/cart.component';
 import { MySoftwareComponent } from './dashboard/my-software/my-software.component';
+import { AdminComponent } from './dashboard/admin/admin.component';
+import { CrudSoftwareComponent } from './dashboard/admin/crud-software/crud-software.component';
 
 
 const routes: Routes = [
@@ -19,6 +21,8 @@ const routes: Routes = [
   { path: 'header', component: HeaderComponent },
   { path: 'customers/:id', component: DetailcustomerComponent, canActivate: [AuthguardService] },
   { path: 'my-softwares', component: MySoftwareComponent, canActivate: [AuthguardService] },
+  { path: 'admin', component: AdminComponent },
+  { path: 'admin-software', component: CrudSoftwareComponent },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
