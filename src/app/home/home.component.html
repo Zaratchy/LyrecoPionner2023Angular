@@ -1,9 +1,13 @@
-<div class="border-amber-700" *ngIf="currentCustomer">
-  <a class="leading-10 tracking-widest" >Hello {{currentCustomer.firstName}} {{currentCustomer.lastName}},</a>
-  <button (click)="showCustomer(currentCustomer.id)" class="">LEARN MORE</button>
+<div *ngIf="showMessageLogged" class="bg-blue-200 p-2">
+  <p class="text-white text-center">{{ welcomeMessage }}</p>
 </div>
 
 <div class="mx-10 my-20">
+
+  <div class="border-amber-700 text-center" *ngIf="currentCustomer">
+    <a class="leading-10 tracking-widest" >Hello {{currentCustomer.firstName}} {{currentCustomer.lastName}}, </a>
+    <button (click)="showCustomer(currentCustomer.id)" class="text-[#2D2E87] font-bold hover:text-blue-300">See your profile</button>
+  </div>
 
   <h1 class="text-center leading-10 tracking-widest">Welcome to DigitalizePro,
     We offer you a selection of our best digital solutions.

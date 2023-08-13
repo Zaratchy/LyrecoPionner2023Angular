@@ -6,10 +6,18 @@
       alt="avatar">
   </div>
   <div class="flex items-center mr-4">
-    <a class="px-3 py-1 text-[#2C2E87] hover:text-[#6D6EBD]" routerLinkActive="active" *ngIf="!isLoggedIn()" [routerLink]="['/register']">Register</a>
-    <a class="px-3 py-1 text-[#2C2E87] hover:text-[#6D6EBD]" routerLinkActive="active" *ngIf="!isLoggedIn()" [routerLink]="['/login']">Login</a>
+    <a class="px-3 py-1 text-[#2C2E87] hover:text-[#6D6EBD]" routerLinkActive="active" *ngIf="!isLoggedIn()"
+       [routerLink]="['/register']">Register</a>
+    <a class="px-3 py-1 text-[#2C2E87] hover:text-[#6D6EBD]" routerLinkActive="active" *ngIf="!isLoggedIn()"
+       [routerLink]="['/login']">Login</a>
     <a class="px-3 py-1 text-[#2C2E87] hover:text-[#6D6EBD]" *ngIf="isLoggedIn()" [routerLink]="['/cart']">Cart</a>
-    <a class="px-3 py-1 text-[#2C2E87] hover:text-[#6D6EBD]" *ngIf="isLoggedIn()" (click)="logout()" >Déconnexion</a>
+    <a class="px-3 py-1 text-[#2C2E87] hover:text-[#6D6EBD]" *ngIf="isLoggedIn()" (click)="logout()">Déconnexion</a>
   </div>
 </div>
 <app-navbar></app-navbar>
+
+  <div class="flex justify-center items-center">
+    <img src="https://cdn-s1.lyreco.com/staticswebshop/pictures/misc_pictures/editos/FRFR/carousel1A.jpg?v=WS23.09" alt="Image de bannière" class="w-full h-auto max-w-screen-xl h-32">
+  </div>
+
+

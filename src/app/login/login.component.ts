@@ -38,7 +38,9 @@ export class LoginComponent implements OnInit {
           this.localStorageService.set('customerId', JSON.stringify(customer.id))
           console.log("Success connect", customer);
           this.loading = false;
-          this.router.navigate(['/home']);
+          this.router.navigate(['/home'], {
+            queryParams: { message: 'Bienvenue sur notre site !' },
+          });
         } else {
           console.log("Error connect");
           this.loading = false;
