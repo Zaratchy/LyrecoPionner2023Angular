@@ -14,7 +14,8 @@ export class CrudSoftwareComponent implements OnInit {
   constructor(private softwareService: SoftwareService, private router: Router) { }
 
   ngOnInit(): void {
-    this.getAllSoftware()
+    this.getAllSoftware();
+    this.loadSoftwareList();
   }
 
   public getAllSoftware(){
@@ -33,16 +34,27 @@ export class CrudSoftwareComponent implements OnInit {
     this.router.navigate(['/software', id]);
   }
 
+  loadSoftwareList(): void {
+    this.softwareService.getAllSoftware()
+      .subscribe(
+        (data) => {
+          this.softwareList = data;
+        },
+        (error) => {
+          console.error('Une erreur s\'est produite lors du chargement des logiciels :', error);
+        }
+      );
+  }
+
 
   onDelete(id: number): void {
     this.softwareService.deleteSoftware(id)
       .subscribe(
         response => {
           console.log('Logiciel supprimé avec succès');
-          // Mettez à jour votre liste de logiciels ou effectuez d'autres actions nécessaires après la suppression.
-        },
+          this.loadSoftwareList();        },
         error => {
-          console.error('Une erreur s\'est produite lors de la suppression :', error);
+          this.loadSoftwareList();
         }
       );
   }
@@ -52,7 +64,7 @@ export class CrudSoftwareComponent implements OnInit {
       .subscribe(
         () => {
           console.log('Logiciel mis à jour avec succès');
-          // Mettez à jour votre liste de logiciels ou effectuez d'autres actions nécessaires après la mise à jour.
+
         },
         error => {
           console.error('Une erreur s\'est produite lors de la mise à jour :', error);
