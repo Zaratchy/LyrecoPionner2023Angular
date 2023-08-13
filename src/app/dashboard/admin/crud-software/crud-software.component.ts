@@ -59,17 +59,8 @@ export class CrudSoftwareComponent implements OnInit {
       );
   }
 
-  onUpdate(id: number, updatedData: any): void {
-    this.softwareService.updateSoftware(id, updatedData)
-      .subscribe(
-        () => {
-          console.log('Logiciel mis à jour avec succès');
-
-        },
-        error => {
-          console.error('Une erreur s\'est produite lors de la mise à jour :', error);
-        }
-      );
+  updateSoftwareDetail(id: number) {
+    this.router.navigate(['/admin-update-software', id]);
   }
 
 }

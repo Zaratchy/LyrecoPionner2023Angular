@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'my-softwares', component: MySoftwareComponent, canActivate: [AuthguardService] },
   { path: 'admin', component: AdminComponent },
   { path: 'update-software', component: AdminComponent },
-  { path: 'admin-software', component: UpdateSoftwareComponent },
+  { path: 'admin-update-software/:id', component: UpdateSoftwareComponent },
   { path: 'login', component: LoginComponent },
   { path: 'admin-software', component: CrudSoftwareComponent },
   { path: 'admin-create-software', component: CreateSoftwareComponent },

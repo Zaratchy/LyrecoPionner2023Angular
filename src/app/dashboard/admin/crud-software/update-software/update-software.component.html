@@ -1,1 +1,12 @@
-<p>update-software works!</p>
+<!-- software-details.component.html -->
+<div *ngIf="softwareDetails">
+  <h2>{{ softwareDetails.name }}</h2>
+
+  <h3>Update Software</h3>
+  <form [formGroup]="softwareForm" (ngSubmit)="updateSoftware()">
+    <label for="name">Name:</label>
+    <input type="text" id="name" formControlName="name" />
+
+    <button type="submit">Save Changes</button>
+  </form>
+</div>

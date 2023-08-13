@@ -21,6 +21,11 @@
         <p class="font-bold ml-4 text-amber-50">Delete software</p>
       </button>
     </div>
+    <div class="w-full flex justify-around">
+      <button (click)="updateSoftwareDetail(software.id)" class="flex w-full justify-center pt-4 pb-4 rounded-bl-md border-r-2 bg-amber-300 hover:bg-amber-300">
+        <p class="font-bold ml-4 text-amber-50">Update software</p>
+      </button>
+    </div>
   </div>
   <div class="w-full flex justify-around">
     <button [routerLink]="['/admin-create-software']" class="flex w-full justify-center pt-4 pb-4 border-r-2 bg-sky-600 hover:bg-[#A5D01F]">

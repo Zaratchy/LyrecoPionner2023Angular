@@ -34,8 +34,7 @@ export class SoftwareService {
   }
 
   updateSoftware(id: number, updatedData: any): Observable<any> {
-    const url = `${this.apiUrl}/softwares/update/${id}`; // Utilisez le chemin correct pour la mise à jour
-    return this.http.put(url, updatedData);
+    return this.http.put(`${this.apiUrl}/softwares/${id}`, updatedData);
   }
 
 
