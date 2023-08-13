@@ -21,7 +21,12 @@ export class CreateSoftwareComponent implements OnInit {
 
   ngOnInit(): void {
     this.softwareForm = this.formBuilder.group({
-      name: ['', Validators.required]
+      name: ['', Validators.required],
+      description: ['', Validators.required],
+      label: ['', Validators.required],
+      releaseDate: ['', Validators.required],
+      price: ['', Validators.required],
+      langage: ['', Validators.required]
     });
   }
 
