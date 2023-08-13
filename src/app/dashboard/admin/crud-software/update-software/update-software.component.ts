@@ -13,7 +13,7 @@ import {Software} from "../../../../models/Software.model";
 export class UpdateSoftwareComponent implements OnInit {
 
   softwareId: number | any;
-  softwareDetails: any;
+  software: any;
   softwareForm: FormGroup | any;
 
   constructor(
@@ -33,18 +33,27 @@ export class UpdateSoftwareComponent implements OnInit {
   loadSoftwareDetails(): void {
     this.softwareService.getSoftwareDetail(this.softwareId).subscribe(
       (data) => {
-        this.softwareDetails = data;
+        this.software = data;
         this.softwareForm.patchValue({ name: data.name });
+        this.softwareForm.patchValue({ description: data.description });
+        this.softwareForm.patchValue({ label: data.label });
+        this.softwareForm.patchValue({ releaseDate: data.releaseDate });
+        this.softwareForm.patchValue({ price: data.price });
+        this.softwareForm.patchValue({ langage: data.langage });
       },
       (error) => {
         console.error('An error occurred:', error);
       }
     );
   }
-
   initForm(): void {
     this.softwareForm = this.fb.group({
       name: ['', Validators.required],
+      description: ['', Validators.required],
+      label: ['', Validators.required],
+      releaseDate: ['', Validators.required],
+      price: ['', Validators.required],
+      langage: ['', Validators.required]
     });
   }
 
@@ -52,11 +61,17 @@ export class UpdateSoftwareComponent implements OnInit {
     if (this.softwareForm.valid) {
       const updatedData = {
         name: this.softwareForm.value.name,
+        description: this.softwareForm.value.description,
+        label: this.softwareForm.value.label,
+        releaseDate: this.softwareForm.value.releaseDate,
+        price: this.softwareForm.value.price,
+        langage: this.softwareForm.value.langage
+
       };
 
       this.softwareService.updateSoftware(this.softwareId, updatedData).subscribe(
         (data) => {
-          this.softwareDetails = data;
+          this.software = data;
           // Affichez un message de confirmation ou effectuez une redirection ici
         },
         (error) => {

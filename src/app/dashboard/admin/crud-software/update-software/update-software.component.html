@@ -1,12 +1,68 @@
-<!-- software-details.component.html -->
-<div *ngIf="softwareDetails">
-  <h2>{{ softwareDetails.name }}</h2>
+<div class=" md:flex lg:justify-center">
 
-  <h3>Update Software</h3>
-  <form [formGroup]="softwareForm" (ngSubmit)="updateSoftware()">
-    <label for="name">Name:</label>
-    <input type="text" id="name" formControlName="name" />
+  <div *ngIf="software" class="lg:mx-10 ">
+    <form [formGroup]="softwareForm" (ngSubmit)="updateSoftware()">
+      <div>
+        <img src="https://www.afreespace.com/wp-content/uploads/2017/09/Freespace-Logo-250-x-100-1.png"
+             class="w-60 h-24">
+      </div>
+      <hr class="border-[#9AC31C]">
+      <div class="mx-10 my-5">
+        <div>
+          <label for="name"></label>
+          <input type="text" id="name" formControlName="name"/>
+        </div>
 
-    <button type="submit">Save Changes</button>
-  </form>
+        <div class="my-5">
+          <h2 class="my-6 text-[#5B5579] font-bold">Description :</h2>
+          <label for="description"></label>
+          <input type="text" id="description" formControlName="description" class="w-[100%]"/>
+        </div>
+        <div class="md:flex md:justify-between">
+          <div class="flex md:mr-4">
+            <div class="mr-14">
+              <p class="my-7 text-[#5B5579] font-bold">Labels</p>
+              <p class="my-7 text-[#5B5579] font-bold">Release date</p>
+              <p class="my-7 text-[#5B5579] font-bold">Languages</p>
+              <p class="my-7 text-[#5B5579] font-bold">Price</p>
+            </div>
+            <div class="mr-1">
+              <div class="my-7">
+                <label for="label"></label>
+                <input type="text" id="label" formControlName="label"/>
+              </div>
+              <div class="my-7">
+                <label for="releaseDate"></label>
+                <input type="text" id="releaseDate" formControlName="releaseDate"/>
+              </div>
+              <div class="my-7">
+                <label for="langage"></label>
+                <input type="text" id="langage" formControlName="langage"/>
+              </div>
+              <div class="my-7">
+                <label for="price"></label>
+                <input type="text" id="price" formControlName="price"/>
+              </div>
+            </div>
+          </div>
+          <div>
+            <img
+              src="https://www.infoburomag.com/uploads/media/image/0001/45/1c291d22a6368d02e489d6352d108a45c6eb3776.jpeg"
+              class="md:hidden sm:block lg:block" alt="" srcset="">
+          </div>
+        </div>
+      </div>
+      <hr class="border-[#9AC31C]">
+      <div class="mx-10">
+        <h2 class="my-6 text-[#5B5579] font-bold">About Us</h2>
+        <p>{{ software.description }}</p>
+      </div>
+      <div class="ml-10">
+        <button class="items-center" type="submit"
+                class="w-[200px] h-10 mt-5 font-bold bg-[#9AC31C] text-white rounded-md hover:bg-[#a6d31f]">Save Changes
+        </button>
+      </div>
+    </form>
+  </div>
+
 </div>
