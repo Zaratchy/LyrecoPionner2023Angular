@@ -1,12 +1,13 @@
-<div class="text-center my-32" *ngIf="customer">
-  <h2 class="font-bold">My profil</h2>
-  <p class="my-10">Civilité : {{ customer.civility }}</p>
-  <p class="my-10">Prénom : {{ customer.firstName }}</p>
-  <p class="my-10">Nom : {{ customer.lastName }}</p>
-  <p class="my-10">Email : {{ customer.email }}</p>
-  <p class="my-10">Téléphone : {{ customer.phone }}</p>
-  <p class="my-10">Role : {{ customer.role.name }}</p>
+<div class="flex justify-center">
+
+  <div class="text-center my-32 w-96 px-7 pt-5 rounded-xl shadow-md text-blue-900" *ngIf="customer">
+    <h2 class="font-bold">My profil</h2>
+    <p class="my-10">Civilité : {{ customer.civility }}</p>
+    <p class="my-10">Prénom : {{ customer.firstName }}</p>
+    <p class="my-10">Nom : {{ customer.lastName }}</p>
+    <p class="my-10">Email : {{ customer.email }}</p>
+    <p class="my-10">Téléphone : {{ customer.phone }}</p>
+    <p class="my-10">Role : {{ customer.role.name }}</p>
+  </div>
 
 </div>
-
-

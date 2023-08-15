@@ -21,7 +21,8 @@
   </div>
 </div>
 
-<div *ngIf="purchasedItems.length === 0">
-  <p>Aucun logiciel trouvé.</p>
+<div *ngIf="purchasedItems.length === 0" class="text-center text-[#2D2D85] mt-20 font-bold">
+  <p>You don't have software.</p>
+  <a class="hover:text-[#797AAA]" [routerLink]="['/softwares']">Software list -></a>
 </div>
 
