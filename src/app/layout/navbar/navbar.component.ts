@@ -13,11 +13,16 @@ export class NavbarComponent implements OnInit {
 
   isMenuOpen: boolean = true
 
-  constructor(public router:Router) {
+  constructor(public router:Router,
+              private authentificationService : AuthentificationService,) {
   }
 
   ngOnInit(): void {
     this.toggleMenu();
+  }
+
+  isLoggedIn(): boolean {
+    return this.authentificationService.isLoggedIn();
   }
 
   toggleMenu() {

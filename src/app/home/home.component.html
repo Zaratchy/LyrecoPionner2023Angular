@@ -1,10 +1,12 @@
-<div *ngIf="showMessageLogged" class="bg-blue-200 p-2">
-  <p class="text-white text-center">{{ welcomeMessage }}</p>
+<div  *ngIf="isLoggedIn()">
+  <div *ngIf="showMessageLogged" class="bg-green-400">
+    <p class="text-white text-center">{{ welcomeMessage }}</p>
+  </div>
 </div>
 
 <div class="mx-10 my-20">
 
-  <div class="border-amber-700 text-center" *ngIf="currentCustomer">
+  <div class="border-amber-700 text-center" *ngIf="isLoggedIn()">
     <a class="leading-10 tracking-widest" >Hello {{currentCustomer.firstName}} {{currentCustomer.lastName}}, </a>
     <button (click)="showCustomer(currentCustomer.id)" class="text-[#2D2E87] font-bold hover:text-blue-300">See your profile</button>
   </div>
@@ -14,19 +16,19 @@
     If you need advice, you can contact a digital solution specialist
   </h1>
 
-  <div class="flex justify-around flex-wrap items-center justify-center mt-20">
+  <div class="flex justify-around flex-wrap items-center lg:mx-24 mt-20">
 
     <div class="flex justify-around text-blue-900 ">
       <div class="w-96 px-7 pt-5 rounded-xl shadow-md">
         <div class="">
-          <h3 class="text-[#2D2E87] font-bold">I need ...</h3>
+          <h3 class="text-[#2D2E87] font-bold">J'ai besoin ...</h3>
           <ul class="mx-5">
-            <li><a href="">Digital dashboard</a></li>
-            <li><a href="">Project management solution</a></li>
-            <li><a href="">Flexwork management</a></li>
-            <li><a href="">Electronic signature</a></li>
-            <li><a href="">Social network</a></li>
-            <li><a href="">Collaboration solution</a></li>
+            <li><a href="">Tableau de bord numérique</a></li>
+            <li><a href="">Solution de gestion de projet</a></li>
+            <li><a href="">Gestion du travail flexible</a></li>
+            <li><a href="">Signature électronique</a></li>
+            <li><a href="">Réseau social</a></li>
+            <li><a href="">Solution collaborative</a></li>
           </ul>
         </div>
         <div class="px-4 py-2">
@@ -34,21 +36,28 @@
       </div>
     </div>
 
-    <div class="flex items-center justify-center md:pr-10 sm:mt-8">
-      <div class="mb-3 pr-10">
+    <div class="flex items-center md:pl-10 sm:mt-8">
+      <div class="mb-3 pr-3">
         <p class=" text-[#9AC31C] text-[60px]"><</p>
       </div>
       <div>
-        <h3 class="text-[#2D2E87] font-bold">Select your need</h3>
+        <h3 class="text-[#2D2E87] text-center font-bold">Nous vous proposons les meilleurs logiciels actuellement sur le marcher.</h3>
+      </div>
+      <div class="mb-3 pl-3">
+        <p class=" text-[#9AC31C] text-[60px]">></p>
       </div>
     </div>
   </div>
-
 </div>
 
-
-
 <div class="mx-10 my-20 lg:mx-32">
-  <h3 class="text-[#2D2E87] font-bold mb-20">Best Suggestions :</h3>
+  <h3 class="text-[#2D2E87] font-bold mb-20">Nos logiciels :</h3>
   <app-softwares></app-softwares>
+</div>
+
+<div class="flex flex-col justify-center items-center text-center mx-10">
+  <h3 class="mb-10 text-[#2D2E87] text-2xl font-bold">A GREAT WORKING DAY. DELIVERED. UNE EXCELLENTE JOURNÉE DE TRAVAIL. GARANTIE.</h3>
+  <h3 class="mb-10 text-[#d7c378] text-2xl font-bold">Lyreco Supporteur Officiel des
+    Jeux Olympiques et Paralympiques de Paris 2024</h3>
+  <img class="max-w-5xl" src="https://images.members.lyreco.com/EloquaImages/clients/Lyreco01/%7B87fe4d14-98da-4379-8e22-06fed726f320%7D_Nouveau_projet.png" alt="">
 </div>

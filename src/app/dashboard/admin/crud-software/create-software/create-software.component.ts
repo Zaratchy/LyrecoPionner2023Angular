@@ -13,6 +13,7 @@ import {Router} from "@angular/router";
 export class CreateSoftwareComponent implements OnInit {
 
   softwareForm: FormGroup | any;
+  submitted = false;
 
   constructor(private formBuilder: FormBuilder,
               private softwareService: SoftwareService,
@@ -33,11 +34,11 @@ export class CreateSoftwareComponent implements OnInit {
   get f() { return this.softwareForm.controls; }
 
   onSubmit() {
-
     this.softwareService.createSoftware(this.softwareForm.value)
       .pipe(first())
       .subscribe(
         data => {
+          this.submitted = true;
           this.router.navigate(['/admin']);
         },
         error => {

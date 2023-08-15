@@ -1,20 +1,47 @@
+<div *ngIf="showMessageRegistered">
+  <div class="bg-green-400">
+    <p class="text-white text-center">{{ welcomeMessage }}</p>
+  </div>
+</div>
+
+<div *ngIf="showMessageRegistered">
+  <div class="bg-green-400">
+    <p class="text-white text-center">{{ welcomeMessage }}</p>
+  </div>
+</div>
+
+
 <div class="flex justify-around py-28 text-blue-900 ">
 
   <div class="w-96 px-7 pt-5 rounded-xl shadow-md">
+
     <div class="text-center">
       <h1 class="title">Connectez-vous à votre compte</h1>
       <p class="text-base">Avec votre compte Lyreco, Profiter de tarifs et offres exclusifs pour les entreprise.</p>
     </div>
+
     <div class="px-4 py-2">
+
       <form class="text-sm" [formGroup]="loginForm" (ngSubmit)="login()">
+
         <div>
           <label id="email" class="font-bold mb-2">Email:</label>
-          <input type="email" formControlName="email">
+          <input type="email" formControlName="email" class="form-control"
+                 [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div class="text-red-500" *ngIf="f.email.errors">L'email est requis !</div>
+          </div>
         </div>
+
         <div>
           <label id="password" class="font-bold mb-2">Mot de passe :</label>
-          <input type="password" formControlName="password">
+          <input type="password" formControlName="password" class="form-control"
+                 [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div class="text-red-500" *ngIf="f.password.errors">Le mot de passe est requis !</div>
+          </div>
         </div>
+
         <div class="items-center">
           <button (click)="login()" class="w-[200px] h-10 mt-5 font-bold bg-[#9AC31C] text-white rounded-md hover:bg-[#a6d31f]" type="button">Connexion</button>
         </div>

@@ -12,9 +12,9 @@ export class AuthguardService {
 
   canActivate(): boolean {
     if (this.authentificationService.isLoggedIn()) {
-      return true; // L'utilisateur est authentifié, permet l'accès à la route
+      return true;
     } else {
-      this.router.navigate(['/login']); // Redirige vers la page de connexion si l'utilisateur n'est pas authentifié
+      this.router.navigate(['/login']);
       return false;
     }
   }

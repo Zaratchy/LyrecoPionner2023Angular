@@ -31,6 +31,10 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  isLoggedIn(): boolean {
+    return this.authentificationService.isLoggedIn();
+  }
+
   showCustomer(id: number){
       this.router.navigate(['/customers', id]);
   }
@@ -38,7 +42,7 @@ export class HomeComponent implements OnInit {
   hideMessageAfterDelay() {
     setTimeout(() => {
       this.showMessageLogged = false;
-    }, 3000); // 5000 milliseconds = 5 seconds
+    }, 3000);
   }
 
 }

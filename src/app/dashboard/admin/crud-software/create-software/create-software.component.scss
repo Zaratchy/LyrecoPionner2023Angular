@@ -1,0 +1,15 @@
+form div {
+  @apply flex flex-col my-2
+}
+
+form div label {
+  @apply mt-1
+}
+
+.title {
+  @apply text-2xl font-bold mb-3
+}
+
+form div input {
+  @apply py-1 px-2 border-solid border-2 border-gray-100 rounded-sm bg-white outline-none placeholder-black block
+}

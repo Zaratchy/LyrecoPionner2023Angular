@@ -27,13 +27,13 @@ export class AuthentificationService {
   login(email: string, password: string) {
     const credential = {email, password};
     console.log(credential)
-    this.isAuthenticated = true;
     console.log(this.isAuthenticated)
     return this.http.post<Customer>(`${this.apiUrl}/login`, credential)
       .pipe(map(customer => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         this.localStorageService.set('customerId', JSON.stringify(customer.id));
         this.currentCustomerSubject.next(customer);
+        this.isAuthenticated = true;
         return customer;
       }));
 
