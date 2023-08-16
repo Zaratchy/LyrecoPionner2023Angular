@@ -1,4 +1,11 @@
-<div class=" md:flex lg:justify-center">
+<div>
+  <div *ngIf="showMessageUpdate == true" class="bg-green-400">
+    <p class="text-white text-center">Modification validé !</p>
+  </div>
+</div>
+
+
+<div class=" md:flex lg:justify-center mb-12">
 
   <div *ngIf="software" class="lg:mx-10 ">
     <form [formGroup]="softwareForm" (ngSubmit)="updateSoftware()">

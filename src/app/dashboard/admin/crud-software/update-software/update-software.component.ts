@@ -15,11 +15,13 @@ export class UpdateSoftwareComponent implements OnInit {
   softwareId: number | any;
   software: any;
   softwareForm: FormGroup | any;
+  showMessageUpdate: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
     private softwareService: SoftwareService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router : Router
   ) {}
 
   ngOnInit(): void {
@@ -71,8 +73,11 @@ export class UpdateSoftwareComponent implements OnInit {
 
       this.softwareService.updateSoftware(this.softwareId, updatedData).subscribe(
         (data) => {
+          this.showMessageUpdate = true;
           this.software = data;
-          // Affichez un message de confirmation ou effectuez une redirection ici
+          setTimeout(() => {
+            this.showMessageUpdate = false;
+          }, 3000);
         },
         (error) => {
           console.error('An error occurred:', error);

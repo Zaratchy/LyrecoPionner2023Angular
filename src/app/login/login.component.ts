@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup | any;
   welcomeMessage: string | any;
-  showMessageRegistered: boolean = true;
+  showMessageRegistered: boolean = false;
   submitted = false;
 
   constructor(private authentificationService: AuthentificationService,
@@ -62,6 +62,7 @@ export class LoginComponent implements OnInit {
   }
 
   hideMessageAfterDelay() {
+    this.showMessageRegistered = true;
     setTimeout(() => {
       this.showMessageRegistered = false;
     }, 3000);

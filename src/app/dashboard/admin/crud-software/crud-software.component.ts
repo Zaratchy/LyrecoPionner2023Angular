@@ -10,6 +10,7 @@ import {Router} from "@angular/router";
 export class CrudSoftwareComponent implements OnInit {
 
   softwareList: any[] | undefined;
+  showMessageDelete: boolean = false;
 
   constructor(private softwareService: SoftwareService, private router: Router) { }
 
