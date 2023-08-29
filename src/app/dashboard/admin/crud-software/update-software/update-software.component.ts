@@ -86,4 +86,8 @@ export class UpdateSoftwareComponent implements OnInit {
     }
   }
 
+  goBack() {
+    this.router.navigate(['admin']);
+  }
+
 }

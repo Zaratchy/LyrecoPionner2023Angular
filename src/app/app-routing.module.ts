@@ -15,7 +15,7 @@ import { AdminComponent } from './dashboard/admin/admin.component';
 import { CrudSoftwareComponent } from './dashboard/admin/crud-software/crud-software.component';
 import { UpdateSoftwareComponent } from './dashboard/admin/crud-software/update-software/update-software.component';
 import { CreateSoftwareComponent } from './dashboard/admin/crud-software/create-software/create-software.component';
-
+import { FooterComponent } from './layout/footer/footer.component';
 
 const routes: Routes = [
   { path: 'software/:id', component: DetailsoftwareComponent },
@@ -27,6 +27,7 @@ const routes: Routes = [
   { path: 'update-software', component: AdminComponent, canActivate: [AuthguardService] },
   { path: 'admin-update-software/:id', component: UpdateSoftwareComponent, canActivate: [AuthguardService] },
   { path: 'login', component: LoginComponent },
+  { path: 'footer', component: FooterComponent },
   { path: 'admin-software', component: CrudSoftwareComponent, canActivate: [AuthguardService] },
   { path: 'admin-create-software', component: CreateSoftwareComponent, canActivate: [AuthguardService] },
   { path: 'home', component: HomeComponent },

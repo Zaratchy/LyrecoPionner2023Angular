@@ -20,6 +20,7 @@ import { AdminComponent } from './dashboard/admin/admin.component';
 import { CrudSoftwareComponent } from './dashboard/admin/crud-software/crud-software.component';
 import { UpdateSoftwareComponent } from './dashboard/admin/crud-software/update-software/update-software.component';
 import { CreateSoftwareComponent } from './dashboard/admin/crud-software/create-software/create-software.component';
+import { FooterComponent } from './layout/footer/footer.component';
 
 @Injectable()
 export class XhrInterceptor implements HttpInterceptor {
@@ -48,7 +49,8 @@ export class XhrInterceptor implements HttpInterceptor {
     AdminComponent,
     CrudSoftwareComponent,
     UpdateSoftwareComponent,
-    CreateSoftwareComponent
+    CreateSoftwareComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
