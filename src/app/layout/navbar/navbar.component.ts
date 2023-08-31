@@ -29,5 +29,9 @@ export class NavbarComponent implements OnInit {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
+  isAdmin(): boolean {
+    return this.authentificationService.isAdmin();
+  }
+
 
 }

@@ -7,51 +7,67 @@
 <div class="mx-10 my-20">
 
   <div class="border-amber-700 text-center" *ngIf="isLoggedIn()">
-    <a class="leading-10 tracking-widest" >Hello {{currentCustomer.firstName}} {{currentCustomer.lastName}}, </a>
+    <a class="leading-10 tracking-widest text-[20px]" >Hello {{currentCustomer.firstName}} {{currentCustomer.lastName}}, </a>
     <button (click)="showCustomer(currentCustomer.id)" class="text-[#2D2E87] font-bold hover:text-blue-300">See your profile</button>
   </div>
 
-  <h1 class="text-center leading-10 tracking-widest">Welcome to DigitalizePro,
+  <h1 class="text-center leading-10 tracking-widest text-[20px]">Welcome to DigitalizePro,
     We offer you a selection of our best digital solutions.
     If you need advice, you can contact a digital solution specialist
   </h1>
 
-  <div class="flex justify-around flex-wrap items-center lg:mx-24 mt-20">
-
-    <div class="flex justify-around text-blue-900 ">
-      <div class="w-96 px-7 pt-5 rounded-xl shadow-md">
-        <div class="">
-          <h3 class="text-[#2D2E87] font-bold">J'ai besoin ...</h3>
-          <ul class="mx-5">
-            <li><a href="">Tableau de bord numérique</a></li>
-            <li><a href="">Solution de gestion de projet</a></li>
-            <li><a href="">Gestion du travail flexible</a></li>
-            <li><a href="">Signature électronique</a></li>
-            <li><a href="">Réseau social</a></li>
-            <li><a href="">Solution collaborative</a></li>
-          </ul>
-        </div>
-        <div class="px-4 py-2">
-        </div>
-      </div>
+  <div class="flex justify-center flex-wrap my-10">
+    <div class="flex flex-col">
+      <img class="image-around" src="assets/Images/Group%2096.png" alt="" srcset="">
+      <p class="text-image-around">Je sélectionne mes solutions</p>
     </div>
+    <div>
+      <img class="image-around" src="assets/Images/Group%2093.png" alt="">
+      <p class="text-image-around">Jusqu'à 25% d'économie</p>
+    </div>
+    <div>
+      <img class="image-around" src="assets/Images/Group%2094.png" alt="" srcset="">
+      <p class="text-image-around">Une facture pour tous</p>
+    </div>
+  </div>
 
-    <div class="flex items-center md:pl-10 sm:mt-8">
-      <div class="mb-3 pr-3">
-        <p class=" text-[#9AC31C] text-[60px]"><</p>
+
+  <!--
+    <div class="flex justify-around flex-wrap items-center lg:mx-24 mt-20">
+
+      <div class="flex justify-around text-blue-900 ">
+        <div class="w-96 px-7 pt-5 rounded-xl shadow-md">
+          <div class="">
+            <h3 class="text-[#2D2E87] font-bold">J'ai besoin ...</h3>
+            <ul class="mx-5">
+              <li><a href="">Tableau de bord numérique</a></li>
+              <li><a href="">Solution de gestion de projet</a></li>
+              <li><a href="">Gestion du travail flexible</a></li>
+              <li><a href="">Signature électronique</a></li>
+              <li><a href="">Réseau social</a></li>
+              <li><a href="">Solution collaborative</a></li>
+            </ul>
+          </div>
+          <div class="px-4 py-2">
+          </div>
+        </div>
       </div>
-      <div>
-        <h3 class="text-[#2D2E87] text-center font-bold">Nous vous proposons les meilleurs logiciels actuellement sur le marcher.</h3>
-      </div>
-      <div class="mb-3 pl-3">
-        <p class=" text-[#9AC31C] text-[60px]">></p>
+
+      <div class="flex items-center md:pl-10 sm:mt-8">
+        <div class="mb-3 pr-3">
+          <p class=" text-[#9AC31C] text-[60px]"><</p>
+        </div>
+        <div>
+          <h3 class="text-[#2D2E87] text-center font-bold">Nous vous proposons les meilleurs logiciels actuellement sur le marcher.</h3>
+        </div>
+        <div class="mb-3 pl-3">
+          <p class=" text-[#9AC31C] text-[60px]">></p>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-<div class="mx-10 my-20 lg:mx-32">
-  <h3 class="text-[#2D2E87] font-bold mb-20">Nos logiciels :</h3>
+  -->
+<div>
   <app-softwares></app-softwares>
 </div>
 

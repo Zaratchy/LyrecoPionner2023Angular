@@ -36,8 +36,13 @@ export class AuthentificationService {
         this.isAuthenticated = true;
         return customer;
       }));
-
   }
+
+  isAdmin(): boolean {
+    const user = this.currentCustomerSubject.value; // Supposons que currentCustomerSubject contienne les informations de l'utilisateur actuel
+    return user && user.role.id === 1;
+  }
+
 
   public get currentCustomerValue(): Customer {
     return this.currentCustomerSubject.value;

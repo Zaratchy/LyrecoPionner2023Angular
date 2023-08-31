@@ -4,7 +4,7 @@
       <a class="rounded-md px-3 py-1 font-medium hover:bg-[#797AAA] hover:text-white" [routerLink]="['/home']">Accueil</a>
       <a class="rounded-md px-3 py-1 font-medium hover:bg-[#797AAA] hover:text-white" *ngIf="isLoggedIn()" [routerLink]="['/my-softwares']">Mes logiciels</a>
       <a class="rounded-md px-3 py-1 font-medium hover:bg-[#797AAA] hover:text-white" [routerLink]="['/softwares']">Liste des logiciels</a>
-      <a class="rounded-md px-3 py-1 font-medium hover:bg-[#797AAA] hover:text-white" *ngIf="isLoggedIn()" [routerLink]="['/admin']">Tableau de bord</a>
+      <a class="rounded-md px-3 py-1 font-medium hover:bg-[#797AAA] hover:text-white" *ngIf="isLoggedIn() && isAdmin()" [routerLink]="['/admin']">Tableau de bord</a>
     </div>
 
     <button *ngIf="!isMenuOpen"
@@ -22,7 +22,7 @@
     <a class="rounded-md px-3 py-1 font-medium hover:bg-[#797AAA] hover:text-white" [routerLink]="['/home']">Accueil</a>
     <a class="rounded-md px-3 py-1 font-medium hover:bg-[#797AAA] hover:text-white" *ngIf="isLoggedIn()" [routerLink]="['/my-softwares']">Mes logiciels</a>
     <a class="rounded-md px-3 py-1 font-medium hover:bg-[#797AAA] hover:text-white" [routerLink]="['/softwares']">Liste des logiciels</a>
-    <a class="rounded-md px-3 py-1 font-medium hover:bg-[#797AAA] hover:text-white" *ngIf="isLoggedIn()" [routerLink]="['/admin']">Tableau de bord</a>
+    <a class="rounded-md px-3 py-1 font-medium hover:bg-[#797AAA] hover:text-white" *ngIf="isLoggedIn() && isAdmin()" [routerLink]="['/admin']">Tableau de bord</a>
   </div>
 </nav>
 

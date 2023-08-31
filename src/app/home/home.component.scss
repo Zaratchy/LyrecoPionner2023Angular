@@ -16,3 +16,11 @@ form div label {
 form div input {
   @apply py-1 px-2 border-solid border-2 border-gray-100 rounded-sm bg-white outline-none placeholder-black block
 }
+
+.image-around {
+  @apply m-5
+}
+
+.text-image-around {
+  @apply text-center text-[20px] text-[#61A3B7] pl-5
+}
