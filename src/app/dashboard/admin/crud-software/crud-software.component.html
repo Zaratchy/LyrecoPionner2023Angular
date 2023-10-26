@@ -5,12 +5,12 @@
 </div>
 
 
-<h1 class="text-2xl text-[#2D2D85] ml-20 mt-10 mb-4">My Dashboard Software :</h1>
+<h1 class="text-2xl text-[#2D2D85] ml-20 mt-10 mb-4">Gestion des logiciels :</h1>
 
 <div *ngIf="softwareList" class="flex justify-around flex-wrap p-6">
   <div class="w-full flex justify-around">
     <button [routerLink]="['/admin-create-software']" class="flex w-80 mt-5 mb-12 justify-center pt-4 pb-4 border-r-2 bg-sky-600 hover:bg-blue-400">
-      <p class="font-bold text-amber-50">Create software</p>
+      <p class="font-bold text-amber-50">Créer un logiciel</p>
     </button>
   </div>
   <div *ngFor="let software of softwareList" class="w-80 mb-8 flex items-center flex-col m-10 rounded-xl border-gray-100 shadow-md bg-white border-1  ">
@@ -24,19 +24,14 @@
 
     <h2 class="text-center mx-5 mb-8">{{ software.description }}</h2>
 
-    <div class="w-full flex justify-around mt-3 border-t-2">
-      <button (click)="showSoftwareDetail(software.id)" class="flex w-full justify-center pt-4 pb-4 border-r-2 bg-[#9AC31C] hover:bg-[#A5D01F]">
-        <p class="font-bold ml-4 text-amber-50">LEARN MORE</p>
-      </button>
-    </div>
     <div class="w-full flex justify-around">
       <button (click)="onDelete(software.id)" class="flex w-full justify-center pt-4 pb-4 rounded-bl-md border-r-2 bg-red-500 hover:bg-[#A5D01F]">
-        <p class="font-bold ml-4 text-amber-50">Delete software</p>
+        <p class="font-bold ml-4 text-amber-50">Supprimer le logiciel</p>
       </button>
     </div>
     <div class="w-full flex justify-around">
       <button (click)="updateSoftwareDetail(software.id)" class="flex w-full justify-center pt-4 pb-4 rounded-bl-md border-r-2 bg-amber-300 hover:bg-amber-300">
-        <p class="font-bold ml-4 text-amber-50">Update software</p>
+        <p class="font-bold ml-4 text-amber-50">Modifier le logiciel</p>
       </button>
     </div>
   </div>
