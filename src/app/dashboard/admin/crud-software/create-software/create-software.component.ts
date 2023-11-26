@@ -27,7 +27,8 @@ export class CreateSoftwareComponent implements OnInit {
       label: ['', Validators.required],
       releaseDate: ['', Validators.required],
       price: ['', Validators.required],
-      langage: ['', Validators.required]
+      langage: ['', Validators.required],
+      logo: ['', Validators.required]
     });
   }
 

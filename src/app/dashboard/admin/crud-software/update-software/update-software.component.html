@@ -11,9 +11,15 @@
 
   <div *ngIf="software" class="lg:mx-10 ">
     <form [formGroup]="softwareForm" (ngSubmit)="updateSoftware()">
-      <div>
-        <img src="https://www.afreespace.com/wp-content/uploads/2017/09/Freespace-Logo-250-x-100-1.png"
-             class="w-60 h-24">
+      <div class="m-8">
+        <img src="{{software.logo}}"
+             class="w-32">
+      </div>
+      <div class="mx-10 my-5">
+        <div>
+          <label for="logo"></label>
+          <input  class="w-[100%]" type="text" id="logo" formControlName="logo"/>
+        </div>
       </div>
       <hr class="border-[#9AC31C]">
       <div class="mx-10 my-5">

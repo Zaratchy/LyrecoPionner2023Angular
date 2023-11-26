@@ -3,9 +3,9 @@
 <div class=" md:flex lg:justify-center mb-12" >
 
   <div *ngIf="software" class="lg:mx-10 ">
-    <div>
-      <img src="https://www.afreespace.com/wp-content/uploads/2017/09/Freespace-Logo-250-x-100-1.png"
-           class="w-60 h-24">
+    <div class="m-8 text-center">
+      <img src="{{software.logo}}" class="w-32">
+      <h1 >{{software.name}}</h1>
     </div>
     <hr class="border-[#9AC31C]">
     <div class="mx-10 my-5">

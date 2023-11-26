@@ -42,6 +42,7 @@ export class UpdateSoftwareComponent implements OnInit {
         this.softwareForm.patchValue({ releaseDate: data.releaseDate });
         this.softwareForm.patchValue({ price: data.price });
         this.softwareForm.patchValue({ langage: data.langage });
+        this.softwareForm.patchValue({ logo: data.logo })
       },
       (error) => {
         console.error('An error occurred:', error);
@@ -55,7 +56,8 @@ export class UpdateSoftwareComponent implements OnInit {
       label: ['', Validators.required],
       releaseDate: ['', Validators.required],
       price: ['', Validators.required],
-      langage: ['', Validators.required]
+      langage: ['', Validators.required],
+      logo: ['', Validators.required]
     });
   }
 
@@ -67,7 +69,8 @@ export class UpdateSoftwareComponent implements OnInit {
         label: this.softwareForm.value.label,
         releaseDate: this.softwareForm.value.releaseDate,
         price: this.softwareForm.value.price,
-        langage: this.softwareForm.value.langage
+        langage: this.softwareForm.value.langage,
+        logo: this.softwareForm.value.logo
 
       };
 
