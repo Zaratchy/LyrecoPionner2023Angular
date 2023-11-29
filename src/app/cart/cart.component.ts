@@ -11,14 +11,16 @@ import {Router} from "@angular/router";
 })
 export class CartComponent implements OnInit {
 
-  cartItems: Software[] = [];
+  cartItems: any[] = [];
 
   constructor(private cartService: CartService,
               private authentificationService: AuthentificationService,
               private router: Router,) { }
 
   ngOnInit(): void {
-    this.cartItems = this.cartService.getCartItems();
+    this.cartService.mergedCartItems$.subscribe(items => {
+      this.cartItems = items; // Mise à jour des données du panier
+    });
   }
 
   private saveCartToStorage(): void {

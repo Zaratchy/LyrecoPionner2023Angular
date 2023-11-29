@@ -4,6 +4,9 @@ import {SoftwareService} from "../services/software/software.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CartService} from "../services/cart/cart.service";
 import {AuthentificationService} from "../services/authentification/authentification.service";
+import {LicenceService} from "../services/licence/licence.service";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AlertService} from "../services/_alert/alert.service";
 
 @Component({
   selector: 'app-detailsoftware',
@@ -12,19 +15,31 @@ import {AuthentificationService} from "../services/authentification/authentifica
 })
 export class DetailsoftwareComponent implements OnInit {
 
+  softwareForm: FormGroup | any;
   software: Software | undefined;
+  submitted = false;
 
   constructor(
     private softwareService: SoftwareService,
+    private licenceService: LicenceService,
     private cartService: CartService,
+    private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authentificationService: AuthentificationService
+    private authentificationService: AuthentificationService,
+    private alertService: AlertService
   ) {}
 
   ngOnInit() {
+    this.softwareForm = this.formBuilder.group({
+      number: ['', Validators.required],
+      duration: ['', Validators.required]
+    });
+
     this.getSoftwareDetail();
   }
+
+  get f() { return this.softwareForm.controls; }
 
   getSoftwareDetail() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -36,15 +51,22 @@ export class DetailsoftwareComponent implements OnInit {
     }
   }
 
-  addToCart(item: Software): void {
+  onSubmit(itemSoftware: Software){
+    this.submitted = true;
+
     if (this.authentificationService.isLoggedIn()) {
-      this.cartService.addToCart(item);
+      const mergedCartItem = { ...itemSoftware, ...this.softwareForm.value };
+      this.cartService.addToCart(mergedCartItem);
+
       console.log(this.cartService);
       this.router.navigate(['cart']);
+
     } else {
+
       console.log("Customer not connecting !");
       this.router.navigate(['login']);
     }
+
   }
 
   goBack() {

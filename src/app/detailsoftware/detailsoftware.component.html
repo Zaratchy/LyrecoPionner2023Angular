@@ -50,17 +50,17 @@
           <h1 class="title text-center">Vos options</h1>
         </div>
         <div class="py-2">
-          <form class="text-sm" >
-            <!--<div>
-              <label  class="font-bold mb-2">Number of licences :</label>
-              <input>
+          <form class="text-sm" [formGroup]="softwareForm" (ngSubmit)="onSubmit(software)" >
+            <div>
+              <label id="number" class="font-bold mb-2">Nombre de licence :</label>
+              <input type="number" formControlName="number" class="form_control"/>
             </div>
             <div>
-              <label id="password" class="font-bold mb-2">Commitment (period)</label>
-              <input type="password" >
-            </div> -->
+              <label id="duration" class="font-bold mb-2">Période :</label>
+              <input type="number" formControlName="duration" class="form_control" />
+            </div>
             <div class="items-center">
-              <button (click)="addToCart(software)" class="w-[200px] h-10 mt-5 font-bold bg-[#9AC31C] text-white rounded-md hover:bg-[#a6d31f]" type="button">Ajouter au panier : {{ software.name }}</button>
+              <button class="w-[200px] h-10 mt-5 font-bold bg-[#9AC31C] text-white rounded-md hover:bg-[#a6d31f]" type="submit">Ajouter au panier : </button>
             </div>
           </form>
         </div>

@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private authentificationService: AuthentificationService,
-    private userService: CustomerService,
+    private customerService: CustomerService,
     private alertService: AlertService
 
   ) {
@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
     }
 
     this.loading = true;
-    this.userService.register(this.registerForm.value)
+    this.customerService.register(this.registerForm.value)
       .pipe(first())
       .subscribe(
         data => {

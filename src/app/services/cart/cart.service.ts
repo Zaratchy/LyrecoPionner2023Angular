@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
 import {Software} from "../../models/Software.model";
+import {BehaviorSubject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  private cartItems: Software[] = [];
   private purchasedItems: Software[] = [];
+
+  private cartItems: any[] = [];
+  private mergedCartItemsSource = new BehaviorSubject<any[]>([]);
+  mergedCartItems$ = this.mergedCartItemsSource.asObservable();
 
   constructor() {
     const storedCart = localStorage.getItem('cart');
@@ -20,9 +24,9 @@ export class CartService {
     localStorage.setItem('cart', JSON.stringify(this.cartItems));
   }
 
-  addToCart(item: Software): void {
+  addToCart(item: any) {
     this.cartItems.push(item);
-    this.saveCartToStorage();
+    this.mergedCartItemsSource.next([...this.cartItems]);
   }
 
   getCartItems(): Software[] {
