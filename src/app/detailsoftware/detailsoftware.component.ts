@@ -54,8 +54,15 @@ export class DetailsoftwareComponent implements OnInit {
   onSubmit(itemSoftware: Software){
     this.submitted = true;
 
+    // @ts-ignore
+    let totalPriceByNumberLicence = this.softwareForm.value.number * itemSoftware.price;
+    // @ts-ignore
+    let totalPriceByNumberDuration = this.softwareForm.value.duration * itemSoftware.price;
+    let totalAmount = totalPriceByNumberDuration + totalPriceByNumberDuration;
+
     if (this.authentificationService.isLoggedIn()) {
-      const mergedCartItem = { ...itemSoftware, ...this.softwareForm.value };
+      const mergedCartItem = { ...itemSoftware, ...this.softwareForm.value, totalAmount };
+
       this.cartService.addToCart(mergedCartItem);
 
       console.log(this.cartService);
