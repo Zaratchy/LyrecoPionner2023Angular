@@ -13,28 +13,28 @@
       <p class="font-bold text-amber-50">Créer un logiciel</p>
     </button>
   </div>
-  <div *ngFor="let software of softwareList" class="w-80 mb-8 flex items-center flex-col m-10 rounded-xl border-gray-100 shadow-md bg-white border-1  ">
+  <div *ngFor="let software of softwareList" class="w-80 mb-8 flex items-center flex-col m-10 rounded-xl border border-gray-100 shadow-md bg-white">
     <h2 class="font-bold mt-5 text-xl">{{ software.name }}</h2>
     <div class="mt-3 mb-8">
       <hr class="my-3">
-      <img src="{{software.logo}}"
-           class="w-32">
+      <img src="{{ software.logo }}" class="w-32">
       <hr class="my-3">
     </div>
 
     <h2 class="text-center mx-5 mb-8">{{ software.description }}</h2>
 
-    <div class="w-full flex justify-around">
-      <button (click)="onDelete(software.id)" class="flex w-full justify-center pt-4 pb-4 rounded-bl-md border-r-2 bg-red-500 hover:bg-[#A5D01F]">
-        <p class="font-bold ml-4 text-amber-50">Supprimer le logiciel</p>
+    <div class="flex-grow"></div> <!-- Utilisation de flex-grow pour pousser les boutons vers le bas -->
+
+    <div class="w-full">
+      <button (click)="onDelete(software.id)" class="w-full py-3 rounded-bl-md border-r-2 bg-red-500 hover:bg-[#A5D01F] text-white font-bold block">
+        Supprimer le logiciel
       </button>
-    </div>
-    <div class="w-full flex justify-around">
-      <button (click)="updateSoftwareDetail(software.id)" class="flex w-full justify-center pt-4 pb-4 rounded-bl-md border-r-2 bg-amber-300 hover:bg-amber-300">
-        <p class="font-bold ml-4 text-amber-50">Modifier le logiciel</p>
+      <button (click)="updateSoftwareDetail(software.id)" class="w-full py-3 rounded-bl-md bg-amber-300 hover:bg-amber-300 text-white font-bold mt-2 block">
+        Modifier le logiciel
       </button>
     </div>
   </div>
+
 </div>
 
 <div *ngIf="!softwareList">
